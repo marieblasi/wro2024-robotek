@@ -2,7 +2,7 @@ import serial
 
 ser = serial.Serial("/dev/ttyUSB0", 9600, timeout = 1)
 
-while True:
+def read_sensors():
         if ser.in_waiting > 0:
             line = ser.readline().decode('utf-8').rstrip()
             values = line.split(',')
