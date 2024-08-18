@@ -8,6 +8,9 @@ def read_sensors():
             values = line.split(',')
             if len(values) == 3:
                 sensor1, sensor2, sensor3 = map(int, values)
-                print(f"Sensor 1: {sensor1}, Sensor 2: {sensor2}, Sensor 3: {sensor3}")
+                #print(f"Sensor 1: {sensor1}, Sensor 2: {sensor2}, Sensor 3: {sensor3}")
+                return sensor1, sensor2, sensor3
             else:
                 print("Received incomplete data")
+                return None
+        return None
