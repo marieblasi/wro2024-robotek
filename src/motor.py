@@ -24,137 +24,51 @@ stby = DigitalOutputDevice(STBY)
 
 i = 1
 
-while True:
-
+def forward(t = 0):
     pwm.value = 1.0
     stby.on()
     ina.on()
     inb.off()
-
-
-    i += 1
-
-
-    if i < 200:
-
-        #Derecha
-
-        print(i)
-
-        in1.on()
-        in2.off()
-        in3.off()
-        in4.off()
-
-        sleep(0.001)
-        
-        in1.on()
-        in2.on()
-        in3.off()
-        in4.off()
-
-        sleep(0.001)
-
-        in1.off()
-        in2.on()
-        in3.off()
-        in4.off()
-
-        sleep(0.001)
-        
-        in1.off()
-        in2.on()
-        in3.on()
-        in4.off()
-
-        sleep(0.001)
-
-        in1.off()
-        in2.off()
-        in3.on()
-        in4.off()
-
-        sleep(0.001)
-        
-        in1.off()
-        in2.off()
-        in3.on()
-        in4.on()
-
-        sleep(0.001)
-
-        in1.off()
-        in2.off()
-        in3.off()
-        in4.on()
-
-        sleep(0.001)
-        
-        in1.on()
-        in2.off()
-        in3.off()
-        in4.on()
-
-        sleep(0.001)
-
-
-
-
-    #Izquierda
-
-    in1.on()
-    in2.off()
-    in3.off()
-    in4.on()
-
-    sleep(0.001)
-
-    in1.off()
-    in2.off()
-    in3.off()
-    in4.on()
-
-    sleep(0.001)
-
-    in1.off()
-    in2.off()
-    in3.on()
-    in4.on()
-
-    sleep(0.001)
-
-    in1.off()
-    in2.off()
-    in3.on()
-    in4.off()
-
-    sleep(0.001)
-
-    in1.off()
-    in2.on()
-    in3.on()
-    in4.off()
-
-    sleep(0.001)
-
-    in1.off()
-    in2.on()
-    in3.off()
-    in4.off()
-
-    sleep(0.001)
-
-    in1.on()
-    in2.on()
-    in3.off()
-    in4.off()
-
-    sleep(0.001)
-        
-    in1.on()
-    in2.off()
-    in3.off()
-    in4.off()
-
-    sleep(0.001)
-
+    sleep(t)
+    
+    
+def backwards(t = 0):
+    pwm.value = 1.0
+    stby.on()
+    ina.off()
+    inb.on()
+    sleep(t)
+    
+def stop(t = 0):  
+    pwm.value = 0.0
+    stby.on()
+    ina.off()
+    inb.off()
+    sleep(t)
+    
+pasos = [(1, 0, 0, 0), (1, 1, 0, 0), (0, 1, 0, 0), (0, 1, 1, 0), (0, 0, 1, 0), (0, 0, 1, 1), (0, 0, 0, 1)]
+  
+ins = [(in1), (in2), (in3), (in4)]
+    
+def right(ciclos):
+    for _ in range(ciclos):
+        for p in pasos: 
+            for index, a in enumerate(p):
+                if a:
+                    ins[index].on()
+                    
+                else:
+                    ins[index].off()
+            sleep(0.001)
+            
+def left(ciclos):
+    for _ in range(ciclos):
+        for p in reversed(pasos): 
+            for index, a in enumerate(p):
+                if a:
+                    ins[index].on()
+                    
+                else:
+                    ins[index].off()
+            sleep(0.001)
+    
