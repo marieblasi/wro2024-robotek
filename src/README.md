@@ -1,6 +1,9 @@
 Control software
 ====
-
-This directory must contain code for control software which is used by the vehicle to participate in the competition and which was developed by the participants.
-
-All artifacts required to resolve dependencies and build the project must be included in this directory as well.
+This contains the code for control software which is used by the vehicle. It is divided into 6 documents:
+- analogSensor: connection to the Arduino Nano
+- detectColors: Color detection functions
+- main: establishes the movement of the car
+- motor: states the forward, backward  and sides' movements
+- ser: involves the serial and sensors
+- util: establishes the range of colors to detect 
