@@ -7,7 +7,7 @@ buffer_string = ''
 def read_sensors():
     global buffer_string
     global last_received
-    buffer_string = buffer_string + ser.read(ser.inWaiting()).decode('utf-8')
+    buffer_string = buffer_string + ser.read(ser.inWaiting()).decode('utf-8', errors = "ignore")
     if '\n' in buffer_string:
         lines = buffer_string.split('\n')
         last_received = lines[-2]
