@@ -71,4 +71,3 @@ def left(ciclos):
                 else:
                     ins[index].off()
             sleep(0.001)
-    
