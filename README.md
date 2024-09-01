@@ -17,7 +17,7 @@ Isabella Gonzales
 
 Age: 15
 
-Hello! My name is Isa and I am from Peru. I love music (singing and playing the guitar), making origami, and painting. A fun fact about me is that 
+Hello! My name is Isa and I am from Peru. I love music (singing and playing the guitar), making origami, and painting. A fun fact about me is that I sang in the National Theather wearing pijamas when I was 6.
 
 ## Why did we choose to participate?
 
