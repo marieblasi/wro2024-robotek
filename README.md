@@ -1,10 +1,11 @@
 WRO2024 ROBOTEK
 ====
-Robotek's repository for WRO2024
-
++ Team's Name: 
++ Teammates: Mafer Zambrano & Isa Gonzales
++ Match Name: Robotek
++ Car's Name: 
+  
 ## Team presentation
-
-
 
 Maria Fernanda Zambrano
 
