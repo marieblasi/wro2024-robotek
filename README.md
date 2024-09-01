@@ -7,11 +7,18 @@ WRO2024 ROBOTEK
   
 ## Team presentation
 
+![maferZambrano](https://github.com/user-attachments/assets/aebda320-fb72-4327-8c66-aefafc43bb79)
+
+---
 Maria Fernanda Zambrano
 
 Age: 17
 
 Hi! My name is Mafer and I am from Peru. Some of my hobbies are swimming, reading, and playing instruments. A fun fact about me is that I am a huge F1 fan!
+
+---
+![isaGonzales](https://github.com/user-attachments/assets/0ae75f01-ae9e-49fe-a418-98b065694f57)
+
 
 Isabella Gonzales
 
