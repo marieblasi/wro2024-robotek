@@ -14,10 +14,10 @@ def read_sensors():
         buffer_string = lines[-1]
         line = last_received.rstrip()
         values = line.split(',')
-        if len(values) == 3:
-            sensor1, sensor2, sensor3 = map(int, values)
-            #print(f"Sensor 1: {sensor1}, Sensor 2: {sensor2}, Sensor 3: {sensor3}")
-            return sensor1, sensor2, sensor3
+        if len(values) == 5:
+            dist_l, dist_t, dist_r, qtr_L, qtr_R = map(int, values)
+            print(f"Sensor 1: {dist_l}, Sensor 2: {dist_t}, Sensor 3: {dist_r}, Sensor 4: {qtr_L}, Sensor 5: {qtr_R}")
+            return dist_l, dist_t, dist_r, qtr_L, qtr_R
         else:
             print("Received incomplete data")
             return None
