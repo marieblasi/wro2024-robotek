@@ -13,8 +13,6 @@ Age: 17
 
 Hi! My name is Mafer and I am from Peru. Some of my hobbies are swimming, reading, and playing instruments. A fun fact about me is that I am a huge F1 fan!
 
-
-
 Isabella Gonzales
 
 Age: 15
@@ -29,3 +27,31 @@ This experience has reminded us that endorsing difficulties means finding soluti
 
 ## Preparing the repo
 
+### *Designing the prototype*
+
+We started by making a carton-prototype based on the turning mechanism and following the official documentation rules. This was our initial prototype:
+
+![prototype](https://github.com/user-attachments/assets/06523245-8f3e-4c9d-9fc8-b9322338aac1)
+
+---
+In order to choose the apropiate materials, we made a design and a table of components with all our options. Then, we selected the ones that seemed the most efficient to us.
+
+---
+![drawingPrototype](https://github.com/user-attachments/assets/8cda5ee6-cf6c-44be-bf7e-c29f5a3abca0)
+![materialsSchemes](https://github.com/user-attachments/assets/58097104-9be4-432f-a44f-7228804fc0a0)
+
+We decided to use these components:
++ ⁠Rasperrby Pi 4
++ ⁠Arduino Nano
++ Arduino Nano Expansion Shield
++ ⁠Li-Po Battery 3.7v 1000 mAh
++ ⁠TT Motor (Blue)
++ ⁠Stepper Motor 28YBJ-48
++ ⁠Driver ULN2003
++ Driver TB6612
++ Breadboard Power Supply Model Adapter Shield MB102 3.3v/5v
++ Power Bank: 5v 3A 10000 mAh
++ ⁠QTR-1A Sensors
++ ⁠IR Sensors Sharp GP2Y0A21
++ ⁠Webcam
++ Capacitor 10uF
