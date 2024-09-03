@@ -10,7 +10,7 @@ WRO2024 ROBOTEK
 ![maferZambrano](https://github.com/user-attachments/assets/aebda320-fb72-4327-8c66-aefafc43bb79)
 
 ---
-Maria Fernanda Zambrano
+### *Maria Fernanda Zambrano*
 
 Age: 17
 
@@ -19,8 +19,7 @@ Hi! My name is Mafer and I am from Peru. Some of my hobbies are swimming, readin
 ---
 ![isaGonzales](https://github.com/user-attachments/assets/0ae75f01-ae9e-49fe-a418-98b065694f57)
 
-
-Isabella Gonzales
+### *Isabella Gonzales*
 
 Age: 15
 
@@ -70,7 +69,16 @@ We decided to use these components:
 
 We started by making the `detectColors` code for the camera. On it, we decomposed the image into pixels, which detected the color in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
 
-### *3. Code for the motors*
+### *3. Printing the prototype and ensambling*
+
+We proceeded to print our first prototype using 3D printing. Once we had all the parts ready, we began the assembly process: we added the motors and the wheels, selected to ensure proper traction and optimal movement.  
+
+![printed prototype](https://github.com/user-attachments/assets/dca1240a-ef3a-4b02-b663-73f74957ab60)
+
+### *4. Code for the Raspberry PI 4*
+
+We usedd the MicroSD card to connect to one of the computers, which we then linked to the Wi-Fi network. We configured its MicroSD card and began developing the code. This includes the modules for `motors`, `detectColors`, `ser`, and `main`.
+
+### *5. Code for the motors*
 
 In `motor`, we implemented the forward and backward motor functions: FORWARDS and BACKWARDS. We developed the turning logic using the step-by-step motor control (LEFT and RIGHT) and created a sequence using a 'for' loop to manage the step-by-step motor movement.
-
