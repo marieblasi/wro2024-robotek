@@ -82,3 +82,10 @@ We usedd the MicroSD card to connect to one of the computers, which we then link
 ### *5. Code for the motors*
 
 In `motor`, we implemented the forward and backward motor functions: FORWARDS and BACKWARDS. We developed the turning logic using the step-by-step motor control (LEFT and RIGHT) and created a sequence using a 'for' loop to manage the step-by-step motor movement.
+
+> [!NOTE]
+> In the end, we decided to change the motor model to improve its efficiency. However, the code remains the same.
+
+### *6. Code for the Arduino*
+
+We used an Arduino Nano and developed the `analogsensor.ino` code, which, along with Sharp sensors, allowed us to measure distance from three different angles: front, left, and right. We collected the data and printed it to the serial port for monitoring. Subsequently, we connected the Arduino to the Raspberry Pi and, through the code in `ser`, read and processed the data provided by the sensors.
