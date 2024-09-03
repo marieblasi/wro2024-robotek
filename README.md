@@ -62,3 +62,7 @@ We decided to use these components:
 + ⁠IR Sensors Sharp GP2Y0A21
 + ⁠Webcam
 + Capacitor 10uF
+
+### *Setting up the camera*
+
+We started by making the `detectColors` code for the camera. On it, we decomposed the image into pixels, which detected the color in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
