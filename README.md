@@ -24,7 +24,10 @@ Isabella Gonzales
 
 Age: 15
 
-Hello! My name is Isa and I am from Peru. I love music (singing and playing the guitar), making origami, and painting. A fun fact about me is that I sang in the National Theather wearing pijamas when I was 6.
+Hello! 
+My name is Isa and I am from Peru. 
+I love music (singing and playing the guitar), making origami, and painting. 
+A fun fact about me is that I sang in the National Theather wearing pijamas when I was 6.
 
 ## Why did we choose to participate?
 
@@ -34,7 +37,7 @@ This experience has reminded us that endorsing difficulties means finding soluti
 
 ## Preparing the repo
 
-### *Designing the prototype*
+### *1. Designing the prototype*
 
 We started by making a carton-prototype based on the turning mechanism and following the official documentation rules. This was our initial prototype:
 
@@ -63,6 +66,11 @@ We decided to use these components:
 + ⁠Webcam
 + Capacitor 10uF
 
-### *Setting up the camera*
+### *2. Code for the camera*
 
 We started by making the `detectColors` code for the camera. On it, we decomposed the image into pixels, which detected the color in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
+
+### *3. Code for the motors*
+
+In `motor`, we implemented the forward and backward motor functions: FORWARDS and BACKWARDS. We developed the turning logic using the step-by-step motor control (LEFT and RIGHT) and created a sequence using a 'for' loop to manage the step-by-step motor movement.
+
