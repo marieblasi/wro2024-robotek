@@ -1,4 +1,5 @@
-Welcome! We are Team Révine representing our country... Perú! 🇵🇪🤖
+Welcome 🤩 ! 
+We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 ====
 
 ![robotek](https://github.com/user-attachments/assets/d41e4236-aab7-4a30-a2f4-86d483993c72)
