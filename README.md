@@ -1,9 +1,9 @@
 WRO2024 ROBOTEK
 ====
-+ Team's Name: Révine
-+ Car's Name: Riska
-+ Teammates: Mafer Zambrano & Isa Gonzales
-+ Match Name: Robotek
++ Team's Name: ***Révine***
++ Car's Name: ***Riska***
++ Teammates: ***Mafer Zambrano & Isa Gonzales***
++ Match Name: ***Robotek***
   
 ## Team presentation
 
