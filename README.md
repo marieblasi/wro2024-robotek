@@ -1,5 +1,8 @@
-WRO2024 ROBOTEK
+Welcome! We are Team Révine representing our country... Perú! 🇵🇪🤖
 ====
+
+![robotek](https://github.com/user-attachments/assets/d41e4236-aab7-4a30-a2f4-86d483993c72)
+
 + Team's Name: ***Révine***
 + Car's Name: ***Riska***
 + Teammates: ***Mafer Zambrano & Isa Gonzales***
@@ -54,7 +57,7 @@ Python and C++ are two widely used languages, representing the best of both worl
 3. ***Use in different platforms:*** We can use Python on boards like the Raspberry Pi for general control tasks, vision, etc., where Python is commonly used because it offers extensive libraries that facilitate interaction with the operating system. In the case of C++, it will be used on Arduino. Microcontrollers like the one we will use are typically programmed in C++ because this language allows for more precise control, lower memory usage, and lower latency, which is essential when working with limited resources and tasks that require high efficiency, such as handling sensors in real time.
 4. ***Performance and flexibility:*** C++ for better performance, such as sensor reading and processing; and Python for greater flexibility in handling advanced logic, such as data manipulation and integration with interfaces. This way, the versatility and communication of both libraries are fully leveraged.   
 
-## 2. Steps to finish the car
+## 2. Our road to success!
 
 ### *2.1 Designing the prototype*
 
