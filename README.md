@@ -55,7 +55,7 @@ We decided to use these components:
 + ⁠Arduino Nano
 + Arduino Nano Expansion Shield
 + ⁠Li-Po Battery 3.7v 1000 mAh
-+ ⁠TT Motor (Blue)
++ ⁠NovaMax Motor 800 Rpm
 + ⁠Stepper Motor 28YBJ-48
 + ⁠Driver ULN2003
 + Driver TB6612
