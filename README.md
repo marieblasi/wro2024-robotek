@@ -119,7 +119,7 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
 ---
 ### *3.2 Code for the camera*
 
-First, we open our repository on *Visual Studio Code* by cloning it into a folder we had.
+First, we open our repository on *Visual Studio Code* by cloning it into a folder we had:
 ```
 cd projects
 
@@ -127,40 +127,40 @@ git clone https://github.com/marieblasi/wro2024-robotek.git
 
 ls wro2024-robotek
 ```
-Then, we installed *Python* in *Visual Studio* and imported the libraries.
+We installed *Python* in *Visual Studio* and imported the libraries:
 ```
 import cv2
 from PIL import Image
 from util import get_limits
 ```
-The camera decomposed the image into pixels, which detected the color in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. 
+Then, we set our camera and wrote the code:
 ```
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(1)   # setting up the camera we will use
 
-red = [40, 20, 150]
+red = [40, 20, 150]   # setting up the colors we need to detect
 blue = [30, 20, 150]
-```
-Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
-```
+
 while True:
     ret, frame = cap.read()
     hsvImage = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     lowerLimit, upperLimit = get_limits(color=red)
-    mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)
+    mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)   # changing the color format (RGB to HSV)
     mask_ = Image.fromarray(mask)
     bbox = mask_.getbbox()
 
     if bbox is not None:
         x1, y1, x2, y2 = bbox
-        frameWithBbox = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 5)      # estrablising our frame box to detect the color
-        cv2.imshow("frame", frameWithBbox)
+        frameWithBbox = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 5)   # establishing our internal frame
+        cv2.imshow("frame", frameWithBbox)   # showing the frame 
     else:
         cv2.imshow("frame", frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 ```
-and it will be like this:
+***Overview of the operation:***
+
+Our main goal was to use the camera to descompose the image it sees into pixels. It firstly detected the color in RGB format, but then was converted it into a new HSV format. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame within the camera, looking like this:
 
 <img width="1052" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
 
