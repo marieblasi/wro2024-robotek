@@ -160,7 +160,7 @@ while True:
 ```
 ***Overview of the operation:***
 
-Our main goal was to use the camera to descompose the image it sees into pixels. It firstly detected the color in RGB format, but then was converted it into a new HSV format. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame within the camera, looking like this:
+Our main goal was to use the camera to detect obstacles based on their colors. To achieve this, we initially decomposed the camera’s image into pixels and set two predetermined colors in the RGB format: red and blue. However, to improve accuracy, we transitioned from RGB to the HSV (Hue, Saturation, Value) color format, specifically focusing on the hue component. This allows us to capture a broader range of colors that closely match those detected by the camera, a task that would be more challenging with RGB. Once the target color falls within the defined hue range, it will be highlighted with an internal frame in the camera’s view, as shown below:
 
 <img width="1052" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
 
@@ -187,7 +187,72 @@ In `motor.py`, we implemented the forward and backward motor functions: FORWARDS
 ---
 ### *3.6 Code for the Arduino*
 
+We opened Arduino IDLE and imported the libraries:
+```
+#include "SharpIR.h"
+#include "QTRSensors.h"
+```
 We used an Arduino Nano and developed the `analogsensor.ino` code, which, along with Sharp sensors, allowed us to measure distance from three different angles: front, left, and right. We collected the data and printed it to the serial port for monitoring. Subsequently, we connected the Arduino to the Raspberry Pi and, through the code in `ser.py`, read and processed the data provided by the sensors.
+
+
+
+#define model 1080
+
+#define IRP1 A0
+#define IRP2 A1
+#define IRP3 A2
+
+QTRSensors qtra;
+
+uint16_t sensor_values[2];
+
+SharpIR sensor1 = SharpIR(IRP1, model);
+SharpIR sensor2 = SharpIR(IRP2, model);
+SharpIR sensor3 = SharpIR(IRP3, model);
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600); 
+
+  qtra.setTypeAnalog();
+  qtra.setSensorPins((const uint8_t[]){A3, A4}, 2);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  qtra.read(sensor_values);
+
+  int vol1 = analogRead(IRP1);
+  int vol2 = analogRead(IRP2);
+  int vol3 = analogRead(IRP3);
+ 
+  int dist1 = sensor1.distance();
+  int dist2 = sensor2.distance();
+  int dist3 = sensor3.distance();
+
+  Serial.print(dist1);
+
+  Serial.print(", ");
+
+  Serial.print(dist2);
+  
+  Serial.print(", ");
+
+  Serial.print(dist3);
+
+  Serial.print(", ");
+
+  Serial.print(sensor_values[0]);
+  
+  Serial.print(", ");
+
+  Serial.println(sensor_values[1]);
+
+  delay(300);
+
+}
 
 ---
 ### *3.7 Designing and printing the second prototype*
