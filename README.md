@@ -101,12 +101,25 @@ We decided to use these components:
 
 ### Reasons for choosing our sensors
 
+By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, reliable, and cost-effective solutions for our robot.
+
++ QTR-1A Sensors:
+
+  1. ***Fast response and high precision for line detection:*** We need a high-speed robot that operates in fast-moving applications. Having the need of real-time feedback for quick adjustments and control, we chose the sensor for its rapid signal process and using the infrared LED and phototransistor pair we detect the surface lines and light.
+  2. ***Compact and low power consumption:*** The small footprint allows easy integration into compact designs without adding extra weight and, also, help us optimize energy efficiency in battery-operated systems like ours, allowing us to conserve battery life for the competition.
+ 
++ Sharp GP2Y0A21 IR Sensors:
+
+  1. ***Accurate distance measurement:*** It can be integrated with microcontrollers and other analog signal processing systems to provide precise distance readings in the obstacle detection task by using the infrared triangulation technology to measure distances from 10 cm to 80 cm 
+  2. ***Reliable and durable:*** The sensor is known for its long-lasting performance and efficiently operation in a wide range of conditions, not only during variations in temperature or humidity, but when there is light interference from the surrounding environment, too, wichi we think could possibly happen during the competition.
+---
+
 ### Wiring diagram
 
 ---
 ### *3.2 Code for the camera*
 
-First, we open our repository on Visual Studio Code by cloning it into a folder we had
+First, we open our repository on *Visual Studio Code* by cloning it into a folder we had.
 ```
 cd projects
 
@@ -114,13 +127,43 @@ git clone https://github.com/marieblasi/wro2024-robotek.git
 
 ls wro2024-robotek
 ```
-Then we installed python in Visual Studio. And import the libraries.
+Then, we installed *Python* in *Visual Studio* and imported the libraries.
 ```
+import cv2
+from PIL import Image
+from util import get_limits
+```
+The camera decomposed the image into pixels, which detected the color in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. 
+```
+cap = cv2.VideoCapture(1)
 
+red = [40, 20, 150]
+blue = [30, 20, 150]
 ```
-We started by making the `detectColors.py` code for the camera. On it, we decomposed the image into pixels, which detected the color in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
+Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
+```
+while True:
+    ret, frame = cap.read()
+    hsvImage = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    lowerLimit, upperLimit = get_limits(color=red)
+    mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)
+    mask_ = Image.fromarray(mask)
+    bbox = mask_.getbbox()
+
+    if bbox is not None:
+        x1, y1, x2, y2 = bbox
+        frameWithBbox = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 5)      # estrablising our frame box to detect the color
+        cv2.imshow("frame", frameWithBbox)
+    else:
+        cv2.imshow("frame", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+```
+and it will be like this:
 
 <img width="1052" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
+
 ---
 ### *3.3 Printing the prototype and ensambling*
 
