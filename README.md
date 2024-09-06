@@ -103,6 +103,12 @@ We decided to use these components:
 | MPU6050 Accelerometer & Gyroscope Sensor | 1 | A sensor that measures acceleration and rotation on three axes, enabling precise motion and orientation tracking. |
 | ⁠Webcam | 1 | A camera used for capturing images and videos, can be used for computer vision or live streaming. |
 | Capacitor 10uF | 1 | An electronic component used to store charge and smooth out voltage fluctuations. | 
+| Blue Color Rubber Wheels 27mm | 2 | Allows the car to move back and forth. |
+| Rubber TT Tires Wheels 12mm | 2 | Allows the car to move and turn. |
+| Jumper Cables | - | Used to connect various components together. |
+| USB Cable | 1 | A cable to connect the Arduino Nano to the Raspberry Pi4. |
+| Switch Button | 1 | Button that signals the Raspberry Pi to start its routine. |
+| Push Button | 1 | Button that powers the system. |
 
 ### Reasons for choosing our sensors
 
@@ -120,7 +126,8 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
 
 + MPU6050 Accelerometer & Gyroscope Sensor:
   
-  + 
+  + ***Motion tracking:*** With both an accelerometer and gyroscope, we can precisely track the robot’s movement and angular velocity to determine our robot's speed, direction, and turns. Moreover, it provides real-time feedback on the robot's orientation (pitch, roll, and yaw), allowing it to maintain balance and stability.
+  + ***Inertial navigation:*** * The sensor will allow us to perform dead reckoning, estimating our robot’s position based on movement data even in environments without GPS. Also, we will detect impacts and take evasive actions, making the robot smarter in navigating through dynamic environments.
 
 ### Wiring diagram
 
