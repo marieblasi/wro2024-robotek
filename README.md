@@ -153,7 +153,7 @@ We used the MicroSD card to connect to one of the computers, which we then linke
 
 + #### Step 1: `ser.py`
   
-  + ***Visual Studio Code:*** We opened Visual Studio Code and imported these libraries.
+  + ***Visual Studio Code:*** We opened Visual Studio Code and imported this library.
   ```
   import serial
   ```
