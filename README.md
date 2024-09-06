@@ -55,6 +55,8 @@ This experience has reminded us that endorsing difficulties means finding soluti
 
 ### 2.1 What is our solution?
 
+### Flow Diagram
+
 ---
 ### 2.2 Why Python and C++?
 
@@ -123,16 +125,16 @@ We started by making the `detectColors` and `util.py` code for the camera. On it
 
 #### ***Step by Step***
 
-+ ***Visual Studio Code:*** We use Visual Studio Code, downloaded *Python* and imported these libraries.
++ ***Visual Studio Code:*** We opened Visual Studio Code, downloaded *Python* and imported these libraries.
 ```
 import cv2
 import numpy as np
 from PIL import Image
 from util import get_limits
 ```
-+ ***`get_limits` function:*** The camera takes a color in `BGR` format and converts it to `HSV` to extract the hue component. It then defines a range of `±10` around the hue value and returns lower and upper bounds for filtering the color in the `HSV` color space. This enables more effective color detection by accounting for variations in the color's hue.
-+ ***Webcam initialization and color setup:*** The program initializes the webcam using `cv2.VideoCapture(1)` to capture live video. It defines two colors, `red` and `blue`, in `BGR` format, which will be used for detecting those specific colors within the video feed.
-+ ***Main Loop with frame capture:*** The program will continuously capture frames from the webcam. Each frame is converted from `BGR` to `HSV` format, which allows more effective color-based filtering. The frame is then processed to isolate the areas that match the target color using the previously calculated `HSV` limits. If a match is found, a rectangle is drawn around the detected color in the frame, which is then displayed in a window as shown:
++ ***`get_limits` function:*** The camera took a color in `BGR` format and converted it to `HSV` to extract the hue component. It then defined a range of `±10` around the hue value and returned lower and upper bounds for filtering the color in the `HSV` color space. This enabled more effective color detection by accounting for variations in the color's hue.
++ ***Webcam initialization and color setup:*** The program initialized the webcam using `cv2.VideoCapture(1)` to capture live video. It defined two colors, `red` and `blue`, in `BGR` format, which was used for detecting those specific colors within the video feed.
++ ***Main Loop with frame capture:*** The program will continuously capture frames from the webcam. Each frame was converted from `BGR` to `HSV` format, which allowed more effective color-based filtering. The frame was then processed to isolate the areas that match the target color using the previously calculated `HSV` limits. If a match is found, a rectangle is drawn around the detected color in the frame, which is then displayed in a window as shown:
 
 <img width="1052" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
 
@@ -156,6 +158,19 @@ In `motor.py`, we implemented the forward and backward motor functions: FORWARDS
 > [!NOTE]
 > In the end, we decided to change the motor model to improve its efficiency. However, the code remains the same.
 
+#### Step by Step
+
++ ***Visual Studio Code:*** We opened Visual Studio Code and imported these libraries.
+```
+from gpiozero import PWMOutputDevice
+from gpiozero import DigitalOutputDevice
+from time import sleep
+```
++ ***Initialization of devices:*** We initialized the GPIO pins that controled both the motor's Pulse Width Modulation (PWM) and digital outputs for controlling motor direction and standby mode. It set up digital outputs for pins `IN1`, `IN2`, `IN3`, and `IN4`, and configured a PWM signal for motor speed control through `pin 12`. The pins `INA` and `INB` were used to control motor direction, and pin STBY was used for enabling and disabling the motor.
++ ***Motor control functions:*** We defined three functions to control the motor: `forward()`, `backwards()`, and `stop()`. The `forward()` function turns the motor on by setting the PWM to full power, enabling standby mode, and setting `INA` high while `INB` is low to move forward. Similarly, `backwards()` sets `INA` low and `INB` high to reverse the motor direction. And, the `stop()` function turns off both `INA` and `INB` and sets the PWM to zero, effectively stopping the motor.
++ ***Stepper Motor and configuration:*** By using the list called `pasos`, we set up step sequences for the stepper motor, which contains tuples representing the on/off states of four pins (IN1 to IN4) that control the motor’s phases.
++ ***Rotation functions: `left()` and `right()`:*** Both functions were defined to rotate the stepper motor either to the right or left. The `right()` function iterates through the steps in `pasos` to activate the motor coils in sequence, turning the motor clockwise for a specified number of cycles. The `left()` function works similarly but uses the reversed `pasos` list to rotate the motor counterclockwise.
+  
 ---
 ### *3.6 Code for the Arduino*
 
@@ -163,14 +178,14 @@ We used an Arduino Nano and developed the `analogsensor.ino` code, which, along 
 
 #### ***Step by Step***
 
-+ ***Arduino IDLE:*** We use the Arduino IDLE platform and imported these libraries.
++ ***Arduino IDLE:*** We opened the Arduino IDLE platform and imported these libraries.
 ```
 #include "SharpIR.h"
 #include "QTRSensors.h"
 ```
 + ***Pin and variable definitions:*** We defined the IR sensor model as `1080` and used three analog pins (`IRP1`, `IRP2`, `IRP3`) to connect three Sharp IR sensors. Then, we initialized a `QTRSensors QTRA` object to manage the reflectance sensors and read them with `sensor_values[2]`, connected to pins A3 and A4. In the case of pins A0, A1, and A2, we created three objects: `SharpIR sensor1`, `sensor2`, and `sensor3`, respectively.
-+ ***`setup()` function:*** The QTR sensors are configured to operate in analog mode using `qtra.setTypeAnalog()` and the pins A3 and A4 are specified as inputs for the reflectance sensors via qtra.setSensorPins().
-+ ***`loop()` function:*** It then reads the analog values from the three Sharp IR sensors using `analogRead()` and calculates the distance to nearby objects using the `distance()` function for each sensor. Finally, the distances from the three Sharp sensors, along with the reflectance sensor values, are printed to the serial monitor using `Serial.print()`, separated by commas with a 300 ms delay (`delay(300)`) per information.
++ ***`setup()` function:*** The QTR sensors were configured to operate in analog mode using `qtra.setTypeAnalog()` and the pins A3 and A4 were specified as inputs for the reflectance sensors via qtra.setSensorPins().
++ ***`loop()` function:*** It then read the analog values from the three Sharp IR sensors using `analogRead()` and calculated the distance to nearby objects using the `distance()` function for each sensor. Finally, the distances from the three Sharp sensors, along with the reflectance sensor values, were printed to the serial monitor using `Serial.print()`, separated by commas with a 300 ms delay (`delay(300)`) per information.
 ---
 ### *3.7 Designing and printing the second prototype*
 
