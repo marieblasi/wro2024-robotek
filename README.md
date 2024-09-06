@@ -89,14 +89,14 @@ We decided to use these components:
 | ⁠Raspberry Pi 4 | 1 | A microcomputer that acts as the main brain of the system, capable of running operating systems and handling complex processing tasks. |
 | Arduino Nano | 1 | A compact microcontroller used for control tasks and processing sensor signals. |
 | Arduino Nano Expansion Shield | 1 | An expansion board for the Arduino Nano that facilitates the connection of various modules and sensors. |
-| ⁠Li-Po Battery 3.7v 1000 mAh | 2 | A lithium polymer battery that provides portable, high-density power. |
-| NovaMax Motor 800 Rpm | 1 | A high-speed DC motor used for propelling the cart |
+| ⁠Li-Po Battery 3.7v 1000 mAh (2S) | 2 | A lithium polymer battery that provides portable, high-density power. |
+| NovaMax Motor 400 Rpm | 1 | A high-speed DC motor used for propelling the cart |
 | Stepper Motor 28YBJ-48 | 1 | A stepper motor used for precise movements, ideal for position control applications. |
 | Driver ULN2003 | 1 | A motor driver for the stepper motor, providing the necessary current for its operation. |
 | Driver TB6612 | 1 | A DC motor driver that allows efficient control of motors using control signals. | 
 | Breadboard Power Supply Model Adapter Shield MB102 3.3v/5v | 1 | A regulated power supply for breadboards, providing 3.3V and 5V voltages. |
-| Power Bank: 5v 3A 10000 mAh | 1 | A portable power source used to power the Raspberry Pi and other components. | 
-| QTR-1A Sensors | 1 | IR reflection sensors used to detect the presence or absence of nearby objects. |
+| Power Bank: 5v 3A 12000 mAh | 1 | A portable power source used to power the Raspberry Pi and other components. | 
+| QTR-1A Sensors | 2 | IR reflection sensors used to detect the presence or absence of nearby objects. |
 | ⁠IR Sensors Sharp GP2Y0A21 | 3 | An IR distance sensor that measures the distance of nearby objects using an infrared beam. | 
 | ⁠Webcam | 1 | A camera used for capturing images and videos, can be used for computer vision or live streaming. |
 | Capacitor 10uF | 1 | An electronic component used to store charge and smooth out voltage fluctuations. | 
