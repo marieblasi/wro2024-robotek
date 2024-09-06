@@ -119,59 +119,20 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
 ---
 ### *3.2 Code for the camera*
 
-First, we open our repository on *Visual Studio Code* by cloning it into a folder we had:
-```
-cd projects
+We started by making the `detectColors` and `util.py` code for the camera. On it, we made the camera descompose the image into pixels, which detected the color it sees in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
 
-git clone https://github.com/marieblasi/wro2024-robotek.git
+#### ***Step by Step***
 
-ls wro2024-robotek
-```
-We installed *Python* in *Visual Studio* and imported the libraries:
++ ***Visual Studio Code:*** We use Visual Studio Code, downloaded *Python* and imported these libraries.
 ```
 import cv2
 import numpy as np
 from PIL import Image
 from util import get_limits
 ```
-Then, we set our range of colors:
-```
-def get_limits(color):
-    c = np.uint8([[color]])   # BGR
-    hsvC = cv2.cvtColor(c, cv2.COLOR_BGR2HSV)
-    hue = hsvC[0][0][0]
-    lowerLimit = np.array([hue - 10, 100, 100])
-    upperLimit = np.array([hue + 10, 255, 255])
-    return lowerLimit, upperLimit
-```
-And wrote the code:
-```
-cap = cv2.VideoCapture(1)   # setting up the camera we will use
-
-red = [40, 20, 150]   # setting up the colors we need to detect
-blue = [30, 20, 150]
-
-while True:
-    ret, frame = cap.read()
-    hsvImage = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    lowerLimit, upperLimit = get_limits(color=red)
-    mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)  
-    mask_ = Image.fromarray(mask)
-    bbox = mask_.getbbox()
-
-    if bbox is not None:
-        x1, y1, x2, y2 = bbox
-        frameWithBbox = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 5)
-        cv2.imshow("frame", frameWithBbox)
-    else:
-        cv2.imshow("frame", frame)
-
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-```
-***Overview of the operation:***
-
-Our main goal was to use the camera to detect obstacles based on their colors. To achieve this, we initially decomposed the camera’s image into pixels and set two predetermined colors in the RGB format: red and blue. However, to improve accuracy, we transitioned from RGB to the HSV (Hue, Saturation, Value) color format, specifically focusing on the hue component. This allows us to capture a broader range of colors that closely match those detected by the camera, a task that would be more challenging with RGB. Once the target color falls within the defined hue range, it will be highlighted with an internal frame in the camera’s view, as shown below:
++ ***`get_limits` function:*** The camera takes a color in `BGR` format and converts it to `HSV` to extract the hue component. It then defines a range of `±10` around the hue value and returns lower and upper bounds for filtering the color in the `HSV` color space. This enables more effective color detection by accounting for variations in the color's hue.
++ ***Webcam initialization and color setup:*** The program initializes the webcam using `cv2.VideoCapture(1)` to capture live video. It defines two colors, `red` and `blue`, in `BGR` format, which will be used for detecting those specific colors within the video feed.
++ ***Main Loop with frame capture:*** The program will continuously capture frames from the webcam. Each frame is converted from `BGR` to `HSV` format, which allows more effective color-based filtering. The frame is then processed to isolate the areas that match the target color using the previously calculated `HSV` limits. If a match is found, a rectangle is drawn around the detected color in the frame, which is then displayed in a window as shown:
 
 <img width="1052" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
 
