@@ -107,13 +107,13 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
 
 + QTR-1A Sensors:
 
-  1. ***Fast response and high precision for line detection:*** We need a high-speed robot that operates in fast-moving applications. Having the need of real-time feedback for quick adjustments and control, we chose the sensor for its rapid signal process and using the infrared LED and phototransistor pair we detect the surface lines and light.
-  2. ***Compact and low power consumption:*** The small footprint allows easy integration into compact designs without adding extra weight and, also, help us optimize energy efficiency in battery-operated systems like ours, allowing us to conserve battery life for the competition.
+  + ***Fast response and high precision for line detection:*** We need a high-speed robot that operates in fast-moving applications. Having the need of real-time feedback for quick adjustments and control, we chose the sensor for its rapid signal process and using the infrared LED and phototransistor pair we detect the surface lines and light.
+  + ***Compact and low power consumption:*** The small footprint allows easy integration into compact designs without adding extra weight and, also, help us optimize energy efficiency in battery-operated systems like ours, allowing us to conserve battery life for the competition.
  
 + Sharp GP2Y0A21 IR Sensors:
 
-  1. ***Accurate distance measurement:*** It can be integrated with microcontrollers and other analog signal processing systems to provide precise distance readings in the obstacle detection task by using the infrared triangulation technology to measure distances from 10 cm to 80 cm 
-  2. ***Reliable and durable:*** The sensor is known for its long-lasting performance and efficiently operation in a wide range of conditions, not only during variations in temperature or humidity, but when there is light interference from the surrounding environment, too, wichi we think could possibly happen during the competition.
+  + ***Accurate distance measurement:*** It can be integrated with microcontrollers and other analog signal processing systems to provide precise distance readings in the obstacle detection task by using the infrared triangulation technology to measure distances from 10 cm to 80 cm 
+  + ***Reliable and durable:*** The sensor is known for its long-lasting performance and efficiently operation in a wide range of conditions, not only during variations in temperature or humidity, but when there is light interference from the surrounding environment, too, wichi we think could possibly happen during the competition.
 ---
 
 ### Wiring diagram
@@ -148,7 +148,21 @@ We proceeded to print our first prototype using 3D printing. Once we had all the
 ---
 ### *3.4 Code for the Raspberry PI 4*
 
-We usedd the MicroSD card to connect to one of the computers, which we then linked to the Wi-Fi network. We configured its MicroSD card and began developing the code. This includes the modules for `motor.py`, `detectColors.py`, `ser.py`, and `main.py`.
+We used the MicroSD card to connect to one of the computers, which we then linked to the Wi-Fi network. We configured its MicroSD card and began developing the code. This includes the modules for `motor.py`, `detectColors.py`, `ser.py`, and `main.py`.
+
+#### Step by Step
+
++ #### Step 1: `ser.py`
+  
+  + ***Visual Studio Code:*** We opened Visual Studio Code and imported these libraries.
+  ```
+  import serial
+  ```
+  + ***Serial communication setup:*** We started the connection using the `serial.Serial()` function, with `/dev/ttyUSB0` as our serial port, a baud rate of `9600`, and a timeout of 1 second.
+  + ***Buffer management:*** Then, we set up the function `read_sensors()` to manage the incoming data from the serial port. A `buffer string` was used to accumulate the incoming data. The `ser.read(ser.inWaiting())` method read all available bytes from the serial buffer checking for the presence of a newline character `\n` to determine the end of a complete message.
+  + ***Data parsing:*** When a newline is detected in the buffer, the accumulated data was split into separate lines using `split('\n')`. The second-to-last line (`last_received`) was processed and stripped of any trailing whitespace and split by commas. The function ensures that exactly five values are received by checking the length of the split data, which are then converted to integers and assigned to corresponding sensor variables (`dist_l`, `dist_t`, `dist_r`, `qtr_L`, `qtr_R`).
+
++ #### Step 2: `main.py `
 
 ---
 ### *3.5 Code for the motors*
