@@ -130,10 +130,21 @@ ls wro2024-robotek
 We installed *Python* in *Visual Studio* and imported the libraries:
 ```
 import cv2
+import numpy as np
 from PIL import Image
 from util import get_limits
 ```
-Then, we set our camera and wrote the code:
+Then, we set our range of colors:
+```
+def get_limits(color):
+    c = np.uint8([[color]])   # BGR
+    hsvC = cv2.cvtColor(c, cv2.COLOR_BGR2HSV)
+    hue = hsvC[0][0][0]
+    lowerLimit = np.array([hue - 10, 100, 100])
+    upperLimit = np.array([hue + 10, 255, 255])
+    return lowerLimit, upperLimit
+```
+And wrote the code:
 ```
 cap = cv2.VideoCapture(1)   # setting up the camera we will use
 
@@ -144,14 +155,14 @@ while True:
     ret, frame = cap.read()
     hsvImage = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     lowerLimit, upperLimit = get_limits(color=red)
-    mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)   # changing the color format (RGB to HSV)
+    mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)  
     mask_ = Image.fromarray(mask)
     bbox = mask_.getbbox()
 
     if bbox is not None:
         x1, y1, x2, y2 = bbox
-        frameWithBbox = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 5)   # establishing our internal frame
-        cv2.imshow("frame", frameWithBbox)   # showing the frame 
+        frameWithBbox = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 5)
+        cv2.imshow("frame", frameWithBbox)
     else:
         cv2.imshow("frame", frame)
 
@@ -187,73 +198,18 @@ In `motor.py`, we implemented the forward and backward motor functions: FORWARDS
 ---
 ### *3.6 Code for the Arduino*
 
-We opened Arduino IDLE and imported the libraries:
+We used an Arduino Nano and developed the `analogsensor.ino` code, which, along with Sharp sensors, allowed us to measure distance from three different angles: front, left, and right. We collected the data and printed it to the serial port for monitoring. Subsequently, we connected the Arduino to the Raspberry Pi and, through the code in `ser.py`, read and processed the data provided by the sensors.
+
+#### ***Step by Step***
+
++ ***Arduino IDLE:*** We use the Arduino IDLE platform and imported these libraries.
 ```
 #include "SharpIR.h"
 #include "QTRSensors.h"
 ```
-We used an Arduino Nano and developed the `analogsensor.ino` code, which, along with Sharp sensors, allowed us to measure distance from three different angles: front, left, and right. We collected the data and printed it to the serial port for monitoring. Subsequently, we connected the Arduino to the Raspberry Pi and, through the code in `ser.py`, read and processed the data provided by the sensors.
-
-
-
-#define model 1080
-
-#define IRP1 A0
-#define IRP2 A1
-#define IRP3 A2
-
-QTRSensors qtra;
-
-uint16_t sensor_values[2];
-
-SharpIR sensor1 = SharpIR(IRP1, model);
-SharpIR sensor2 = SharpIR(IRP2, model);
-SharpIR sensor3 = SharpIR(IRP3, model);
-
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600); 
-
-  qtra.setTypeAnalog();
-  qtra.setSensorPins((const uint8_t[]){A3, A4}, 2);
-
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-
-  qtra.read(sensor_values);
-
-  int vol1 = analogRead(IRP1);
-  int vol2 = analogRead(IRP2);
-  int vol3 = analogRead(IRP3);
- 
-  int dist1 = sensor1.distance();
-  int dist2 = sensor2.distance();
-  int dist3 = sensor3.distance();
-
-  Serial.print(dist1);
-
-  Serial.print(", ");
-
-  Serial.print(dist2);
-  
-  Serial.print(", ");
-
-  Serial.print(dist3);
-
-  Serial.print(", ");
-
-  Serial.print(sensor_values[0]);
-  
-  Serial.print(", ");
-
-  Serial.println(sensor_values[1]);
-
-  delay(300);
-
-}
-
++ ***Pin and variable definitions:*** We defined the IR sensor model as `1080` and used three analog pins (`IRP1`, `IRP2`, `IRP3`) to connect three Sharp IR sensors. Then, we initialized a `QTRSensors QTRA` object to manage the reflectance sensors and read them with `sensor_values[2]`, connected to pins A3 and A4. In the case of pins A0, A1, and A2, we created three objects: `SharpIR sensor1`, `sensor2`, and `sensor3`, respectively.
++ ***`setup()` function:*** The QTR sensors are configured to operate in analog mode using `qtra.setTypeAnalog()` and the pins A3 and A4 are specified as inputs for the reflectance sensors via qtra.setSensorPins().
++ ***`loop()` function:*** It then reads the analog values from the three Sharp IR sensors using `analogRead()` and calculates the distance to nearby objects using the `distance()` function for each sensor. Finally, the distances from the three Sharp sensors, along with the reflectance sensor values, are printed to the serial monitor using `Serial.print()`, separated by commas with a 300 ms delay (`delay(300)`) per information.
 ---
 ### *3.7 Designing and printing the second prototype*
 
