@@ -57,6 +57,8 @@ This experience has reminded us that endorsing difficulties means finding soluti
 
 ### Flow Diagram
 
+![flowdiagram](https://github.com/user-attachments/assets/7294caf2-8c36-4763-9ca8-ecd5782a64da)
+
 ---
 ### 2.2 Why Python and C++?
 
