@@ -114,7 +114,6 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
 
   + ***Accurate distance measurement:*** It can be integrated with microcontrollers and other analog signal processing systems to provide precise distance readings in the obstacle detection task by using the infrared triangulation technology to measure distances from 10 cm to 80 cm 
   + ***Reliable and durable:*** The sensor is known for its long-lasting performance and efficiently operation in a wide range of conditions, not only during variations in temperature or humidity, but when there is light interference from the surrounding environment, too, wichi we think could possibly happen during the competition.
----
 
 ### Wiring diagram
 
@@ -218,13 +217,13 @@ We printed the prototype for the third and final time, adding an additional leve
 ![printed prototype 3](https://github.com/user-attachments/assets/7d53b3ab-7a73-4089-b90a-d9bf99f5aa0f)
 
 ---
-### *3.9 Code for avoiding obstacles*
+### *3.9 Code for the turns*
+
+---
+### *3.10 Code for avoiding obstacles*
 
 > [!NOTE]
 > About the `main.py`...
-
----
-### *3.10 Code for the turns*
 
 ---
 ### *3.11 Code for parking*
