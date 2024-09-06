@@ -98,7 +98,7 @@ We decided to use these components:
 | Power Bank: 5v 3A 12000 mAh | 1 | A portable power source used to power the Raspberry Pi and other components. | 
 | QTR-1A Sensors | 2 | IR reflection sensors used to detect the presence or absence of nearby objects. |
 | ⁠IR Sensors Sharp GP2Y0A21 | 3 | An IR distance sensor that measures the distance of nearby objects using an infrared beam. | 
-| MPU6050 Accelerometer & Giroscope Sensor | 1 | A sensor that measures acceleration and rotation on three axes, enabling precise motion and orientation tracking. |
+| MPU6050 Accelerometer & Gyroscope Sensor | 1 | A sensor that measures acceleration and rotation on three axes, enabling precise motion and orientation tracking. |
 | ⁠Webcam | 1 | A camera used for capturing images and videos, can be used for computer vision or live streaming. |
 | Capacitor 10uF | 1 | An electronic component used to store charge and smooth out voltage fluctuations. | 
 
@@ -116,7 +116,7 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
   + ***Accurate distance measurement:*** It can be integrated with microcontrollers and other analog signal processing systems to provide precise distance readings in the obstacle detection task by using the infrared triangulation technology to measure distances from 10 cm to 80 cm 
   + ***Reliable and durable:*** The sensor is known for its long-lasting performance and efficiently operation in a wide range of conditions, not only during variations in temperature or humidity, but when there is light interference from the surrounding environment, too, wichi we think could possibly happen during the competition.
 
-+ MPU6050 Accelerometer & Giroscope Sensor:
++ MPU6050 Accelerometer & Gyroscope Sensor:
   
   + 
 
