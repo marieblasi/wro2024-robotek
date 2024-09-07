@@ -150,7 +150,7 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
 ### Wiring diagram
 
 <p align = "center">
-  <img src = "https://github.com/user-attachments/assets/0290cbf9-f94b-4d9c-834c-3aba63771e25", width = "850x">
+  <img src = "https://github.com/user-attachments/assets/1a49de83-32af-4f52-9886-47c35641fcf5", width = "850x">
   </p>
 
 ---
@@ -251,15 +251,14 @@ We redesigned the prototype after realizing that we needed to adapt the new comp
 ---
 ### *3.8 Designing and printing the last prototype*
 
-We printed the prototype for the third and final time, adding an additional level to better distribute the components and provide a mount for the webcam. We also slightly modified the design of the motor mount to fit the PowerBank, ensuring a perfect fit and a more efficient arrangement of all elements.
+We printed the prototype for the third and final time, adding an additional level to better distribute the components and provide a mount for the *webcam*. We also slightly modified the design of the motor mount to fit the *PowerBank 12000mAh*, ensuring a perfect fit and a more efficient arrangement of all elements. We added 2 *QRT 1A Sensors* to improve the precision of environmental sensing while a *MPU6050 Accelerometer & Gyroscope Sensor* was included to enhance stability and orientation control. We changed the engine and adjusted the *Gear ratio* to provide better torque for handling challenging terrain. After, upgrading our batteries to *LiPo cells* to increase power capacity and efficiency, a *camera* was mounted for real-time visual feedback, and a *push button*, for easy interaction. We decided to change the metal wheels to plastic ones for their lightweight properties, and the front wheels’ support was reinforced with ball bearings to reduce friction and ensure smoother movement.
 
-> [!NOTE]
-> To optimize performance and extend the cart's runtime, we decided to replace the traditional batteries with LiPo cells.
-
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/d4e2e5f6-b742-464e-b3f9-be03cae16b6d", width = "650px">
+  </p>
+  
 ---
-### *3.9 Code for the turns*
 
----
 ### *3.10 Code for avoiding obstacles*
 
 > [!NOTE]
