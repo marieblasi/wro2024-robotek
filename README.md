@@ -149,6 +149,10 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
 
 ### Wiring diagram
 
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/0290cbf9-f94b-4d9c-834c-3aba63771e25", width = "850x">
+  </p>
+
 ---
 ### *3.2 Code for the camera*
 
