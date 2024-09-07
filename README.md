@@ -96,9 +96,9 @@ We started by making a carton-prototype based on the turning mechanism and follo
 > [!TIP]
 > In order to choose the apropiate materials, we made a design and a table of components with all our options. Then, we selected the ones that seemed the most efficient to us.
 
-<p align = "center">
-  <img src = "https://github.com/user-attachments/assets/8cda5ee6-cf6c-44be-bf7e-c29f5a3abca0", width = "500px">
-  <img src = "https://github.com/user-attachments/assets/58097104-9be4-432f-a44f-7228804fc0a0", width = "500px">
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8cda5ee6-cf6c-44be-bf7e-c29f5a3abca0" width="200px">
+  <img src="https://github.com/user-attachments/assets/58097104-9be4-432f-a44f-7228804fc0a0" width="200px">
   </p>  
 
 We decided to use these components:
