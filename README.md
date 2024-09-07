@@ -53,7 +53,15 @@ This experience has reminded us that endorsing difficulties means finding soluti
 
 ## About the car!
 
-### 2.1 What is our solution?
+### 2.1 Which is our autonomous car's logic?
+
+1. The program will begin with the initialization of sensors, camera, and variables. Once started, the car will enter a continuous loop with the main function running endlessly. In each loop iteration, *it will capture a frame from the camera and will read input from various sensors*, including distance and reflectance sensors.
+2. The captured frame  is then analyzed to detect obstacles, and if one is found, its color is identified as either red or green. *The navigation strategy adjusts the car to pass on the right side for red obstacles and on the left side for green ones, while continuing with PID control if no obstacle is detected.* Steering adjustments are combined with the obstacle avoidance strategy and PID control to manage the car’s movement. The system also monitors proximity to obstacles, performing avoidance maneuvers if too close, reducing speed when necessary, or maintaining normal speed otherwise.
+3. The car moves forward based on the calculated steering and speed. *Reflectance sensors are used to count the number of laps completed.* If all required laps are finished, the car navigates to the parking area and performs parallel parking; if not, the loop continues. Finally, the program ends after successful parking or if interrupted.
+
+### *PID Controller*
+
+![PID function](https://github.com/user-attachments/assets/9bc4ade3-cc89-4615-9778-3569b1e8419f)
 
 ### Flow Diagram
 
