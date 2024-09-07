@@ -201,8 +201,6 @@ We used the MicroSD card to connect to one of the computers, which we then linke
   + ***Buffer management:*** Then, we set up the function `read_sensors()` to manage the incoming data from the serial port. A `buffer string` was used to accumulate the incoming data. The `ser.read(ser.inWaiting())` method read all available bytes from the serial buffer checking for the presence of a newline character `\n` to determine the end of a complete message.
   + ***Data parsing:*** When a newline is detected in the buffer, the accumulated data was split into separate lines using `split('\n')`. The second-to-last line (`last_received`) was processed and stripped of any trailing whitespace and split by commas. The function ensures that exactly five values are received by checking the length of the split data, which are then converted to integers and assigned to corresponding sensor variables (`dist_l`, `dist_t`, `dist_r`, `qtr_L`, `qtr_R`).
 
-+ #### Step 2: `main.py `
-
 ---
 ### *3.5 Code for the motors*
 
@@ -258,11 +256,14 @@ We printed the prototype for the third and final time, adding an additional leve
   </p>
   
 ---
+### *3.9 Main code* (Continuation of *Code for Raspberry PI 4*)
 
+#### Step by Step
+
++ #### Step 2: `main.py`
+
+---
 ### *3.10 Code for avoiding obstacles*
-
-> [!NOTE]
-> About the `main.py`...
 
 ---
 ### *3.11 Code for parking*
