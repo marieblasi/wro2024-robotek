@@ -1,8 +1,9 @@
 Welcome 🤩 ! 
 We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 ====
-
-![robotek](https://github.com/user-attachments/assets/d41e4236-aab7-4a30-a2f4-86d483993c72)
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/d41e4236-aab7-4a30-a2f4-86d483993c72">
+  </p>
 
 + Team's Name: ***Révine***
 + Car's Name: ***Riska***
@@ -13,7 +14,9 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 
 ### 1.1 Team presentation
 
-![mafer phto](https://github.com/user-attachments/assets/a4aac382-f16b-45c4-b467-26af949a7d07)
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/e5ef3311-5d4e-47c4-966b-c02dc7470dbe",  width = "700px">
+  </p>
 
 ---
 ### *Maria Fernanda Zambrano*
@@ -24,7 +27,9 @@ Age: 17
 Hi! My name is Mafer and I am from Peru. Some of my hobbies are swimming, reading, and playing instruments. A fun fact about me is that I am a huge F1 fan!
 
 ---
-![isaGonzales](https://github.com/user-attachments/assets/0ae75f01-ae9e-49fe-a418-98b065694f57)
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/0ae75f01-ae9e-49fe-a418-98b065694f57",  width = "700px">
+  </p>
 
 ### *Isabella Gonzales*
 🐨 🤖 🥐 🌟 🥋 🎨 🎼 🥧 🍀
@@ -36,7 +41,6 @@ My name is Isa and I am from Peru.
 I love music (singing and playing the guitar), making origami, and painting. 
 A fun fact about me is that I sang in the National Theather wearing pijamas when I was 6.
 
----
 ### 1.2 Team Management
 
 Our project is the product of a collaborative effort by a talented and dedicated team, with each member contributing their unique expertise. As students of Robotek from Lima, Peru, we have learned valuable skills in robotics and technology. To learn more about our history and participations, follow us on [Instagram](https://www.instagram.com/ro_bo_tek?igsh=MXZydWFtamlzbHd4ag==).
@@ -44,7 +48,6 @@ Our project is the product of a collaborative effort by a talented and dedicated
 + ***Team Supervisor:*** Alejandro Garayar
 + ***Coach:*** Renzo Damian
 
----
 ### 1.3 Why did we choose to participate?
 
 We see this project as more than just a competition. It is a chance to be creative, work together, and overcome challenges—both in the design and in ourselves. By designing our robot, we are not creating just a machine but a mixture of our electronic and coding skills, and innovation.
@@ -61,13 +64,16 @@ This experience has reminded us that endorsing difficulties means finding soluti
 
 ### *PID Controller*
 
-![PID function](https://github.com/user-attachments/assets/9bc4ade3-cc89-4615-9778-3569b1e8419f)
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/9bc4ade3-cc89-4615-9778-3569b1e8419f">
+  </p>
 
 ### Flow Diagram
 
-![flowdiagram](https://github.com/user-attachments/assets/7294caf2-8c36-4763-9ca8-ecd5782a64da)
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/7294caf2-8c36-4763-9ca8-ecd5782a64da">
+  </p>
 
----
 ### 2.2 Why Python and C++?
 
 Python and C++ are two widely used languages, representing the best of both worlds. While one is used for fast and flexible development, the other can be implemented for tasks that require high performance. However, together they provide a solution for a system like ours, where we need to control hardware while efficiently processing data at the same time.
@@ -83,13 +89,17 @@ Python and C++ are two widely used languages, representing the best of both worl
 
 We started by making a carton-prototype based on the turning mechanism and following the official documentation rules. This was our initial prototype:
 
-![prototype](https://github.com/user-attachments/assets/06523245-8f3e-4c9d-9fc8-b9322338aac1)
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/06523245-8f3e-4c9d-9fc8-b9322338aac1", width = "650px">
+  </p>
 
 > [!TIP]
 > In order to choose the apropiate materials, we made a design and a table of components with all our options. Then, we selected the ones that seemed the most efficient to us.
 
-![drawingPrototype](https://github.com/user-attachments/assets/8cda5ee6-cf6c-44be-bf7e-c29f5a3abca0)
-![materialsSchemes](https://github.com/user-attachments/assets/58097104-9be4-432f-a44f-7228804fc0a0)
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/8cda5ee6-cf6c-44be-bf7e-c29f5a3abca0", width = "500px">
+  <img src = "https://github.com/user-attachments/assets/58097104-9be4-432f-a44f-7228804fc0a0", width = "500px">
+  </p>  
 
 We decided to use these components:
 
@@ -157,14 +167,18 @@ from util import get_limits
 + ***Webcam initialization and color setup:*** The program initialized the webcam using `cv2.VideoCapture(1)` to capture live video. It defined two colors, `red` and `blue`, in `BGR` format, which was used for detecting those specific colors within the video feed.
 + ***Main Loop with frame capture:*** The program will continuously capture frames from the webcam. Each frame was converted from `BGR` to `HSV` format, which allowed more effective color-based filtering. The frame was then processed to isolate the areas that match the target color using the previously calculated `HSV` limits. If a match is found, a rectangle is drawn around the detected color in the frame, which is then displayed in a window as shown:
 
-<img width="1052" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
+<p align = "center">
+  <img width="900" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
+</p>
 
 ---
 ### *3.3 Printing the prototype and ensambling*
 
 We proceeded to print our first prototype using 3D printing. Once we had all the parts ready, we began the assembly process: we added the motors and the wheels, selected to ensure proper traction and optimal movement.  
 
-![printed prototype](https://github.com/user-attachments/assets/dca1240a-ef3a-4b02-b663-73f74957ab60)
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/dca1240a-ef3a-4b02-b663-73f74957ab60", width = "650px">
+  </p>
 
 ---
 ### *3.4 Code for the Raspberry PI 4*
@@ -226,8 +240,10 @@ We used an Arduino Nano and developed the `analogsensor.ino` code, which, along 
 
 We redesigned the prototype after realizing that we needed to adapt the new components to the cart. We 3D printed only the essential parts, such as the steering system and motor mounts, while the rest was cut from acrylic to keep the structure light and sturdy.
 
-![printed prototype 2](https://github.com/user-attachments/assets/7b2bdaf5-1f30-4a61-9fc3-0eed9f7d6961)
-
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/7b2bdaf5-1f30-4a61-9fc3-0eed9f7d6961", width = "650px">
+  </p>
+  
 ---
 ### *3.8 Designing and printing the last prototype*
 
@@ -235,8 +251,6 @@ We printed the prototype for the third and final time, adding an additional leve
 
 > [!NOTE]
 > To optimize performance and extend the cart's runtime, we decided to replace the traditional batteries with LiPo cells.
-
-![printed prototype 3](https://github.com/user-attachments/assets/7d53b3ab-7a73-4089-b90a-d9bf99f5aa0f)
 
 ---
 ### *3.9 Code for the turns*
