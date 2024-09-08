@@ -3,8 +3,8 @@ from gpiozero import DigitalOutputDevice
 from time import sleep
 
 PWM = 12
-INA = 16
-INB = 18
+INA = 18
+INB = 16
 STBY = 22
 
 IN1 = 5
@@ -24,16 +24,16 @@ stby = DigitalOutputDevice(STBY)
 
 i = 1
 
-def forward(t = 0):
-    pwm.value = 1.0
+def forward(_pwm=1.0, t = 0):
+    pwm.value = _pwm
     stby.on()
     ina.on()
     inb.off()
     sleep(t)
     
     
-def backwards(t = 0):
-    pwm.value = 1.0
+def backwards(_pwm=1.0,t = 0):
+    pwm.value = _pwm
     stby.on()
     ina.off()
     inb.on()
@@ -41,7 +41,7 @@ def backwards(t = 0):
     
 def stop(t = 0):  
     pwm.value = 0.0
-    stby.on()
+    stby.off()
     ina.off()
     inb.off()
     sleep(t)
@@ -59,7 +59,7 @@ def right(ciclos):
                     
                 else:
                     ins[index].off()
-            sleep(0.001)
+            sleep(0.0004)
             
 def left(ciclos):
     for _ in range(ciclos):
@@ -70,4 +70,4 @@ def left(ciclos):
                     
                 else:
                     ins[index].off()
-            sleep(0.001)
+            sleep(0.0004)
