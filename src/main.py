@@ -4,6 +4,15 @@ from ser import read_sensors
 from time import sleep, time
 from detectColors import analyze_sides
 import cv2
+from gpiozero import Button
+
+# initialize with the start button
+button = Button(21)
+
+# wait for button press to start
+print("Press the button to start...")
+button.wait_for_press()
+print("Button pressed. Starting the program...")
 
 # called our camera
 cap = cv2.VideoCapture(0)
@@ -12,7 +21,7 @@ kp = 2.9     # should be greater than  kd
 kd = 0.8
 ki = 0.0001  # should be a minimun value value
 
-# constants
+
 FORWARD_SPEED = 1
 FORWARD_TIME = 0.25
 BACKWARD_SPEED = 0.7
@@ -81,7 +90,7 @@ while True:
     
     # specify sensors and the camera angles
     if sensor_values:
-        cv2.imshow("frame", frame)
+        # cv2.imshow("frame", frame)
         dist_l, dist_t, dist_r, qtr_L, qtr_R = sensor_values
         steering_change = pid_control(dist_l, dist_r)
         cam_direction = analyze_sides(frame)
@@ -161,7 +170,3 @@ while True:
     
     # delay
     sleep(0.05)
-    
-    # show the camera
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
