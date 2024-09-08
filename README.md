@@ -330,10 +330,7 @@ while True:
 ---
 ### *3.10 Code for avoiding obstacles*
 
----
-### *3.11 Code for parking*
-
-In `parking.py` we defined our robot's code for the parallel parking system, consisting of three main parts. 
+In `avoiding.py` we defined our robot's code for the open challenge, where we need to navigate and avoid obstacles by detecting red and green blocks using a camera, while also using distance sensors to ensure safe forward movement.
 
 #### Step by Step
 
@@ -345,7 +342,18 @@ from time import sleep, time
 import cv2
 import numpy as np
 ``` 
++ ***Caption of video frames for detection:*** The robot will continously capture video frames, convert them to the HSV color space, and apply the color masks to detect red and green blocks.
++ ***Movements:*** If a red block is detected, the robot performs a right turn, moves forward, and then turns left to maneuver around the block; for a green block, it performs a left turn first, followed by a right turn, and moves forward to bypass the obstacle. If no color block is detected, the robot uses sensor readings from the left, front, and right sides to determine if it's safe to move forward, ensuring that no obstacles are too close.
++ The robot performs these actions in a continuous loop until it sees the a suitable `parallel_parking` area. *See Code for Parking* for more.
+
+---
+### *3.11 Code for parking*
+
+In within `avoiding.py` we defined our robot's code for the parallel parking system, consisting of three main parts. 
+
+#### Step by Step
+
 + ****Constants and Parameters:*** First, we defined the constants and parameters we will use, including the robot's length, the required parking space length (1.25 times the robot's length), and speeds for forward and backward movements.
-+ ***`measure_parking_space` function:*** It will define the continuously forward moves of the robot while using sensors to measure the distance on the right side, checking if the detected space is large enough for parking (greater than the required length). If a valid parking space is detected, the robot proceeds to execute the parking maneuver.
++ ***`measure_parking_space` function:*** It will define the continuously forward moves of the robot while using sensors to measure the distance on the right side, checking if the detected space is large enough for parking (greater than the required length). If a valid parking space is detected, the robot proceeds to execute the `parking maneuver`.
 + ***The `parallel_parking` function:*** Performs the actual maneuver: the robot first moves forward to align itself with the space, then turns to the right while moving backward to start entering the space, and finally, it turns left to straighten itself and continue reversing into the spot.
-+ ***The `main_loop` function:*** Running continuously, it will check for parking spaces and initialize the parking maneuver once a suitable space is found. The program terminates after the robot successfully parks.
++ ***The `main_loop` function:*** Running continuously, it will check for parking spaces and initialize the `parking maneuver` once a suitable space is found. The program terminates after the robot successfully parks.
