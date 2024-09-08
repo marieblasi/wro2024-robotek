@@ -332,3 +332,20 @@ while True:
 
 ---
 ### *3.11 Code for parking*
+
+In `parking.py` we defined our robot's code for the parallel parking system, consisting of three main parts. 
+
+#### Step by Step
+
++ ***Visual Studio Code:*** We opened Visual Studio Code and imported these libraries.
+```
+from motor import forward, backwards, stop, left, right
+from ser import read_sensors
+from time import sleep, time
+import cv2
+import numpy as np
+``` 
++ ****Constants and Parameters:*** First, we defined the constants and parameters we will use, including the robot's length, the required parking space length (1.25 times the robot's length), and speeds for forward and backward movements.
++ ***`measure_parking_space` function:*** It will define the continuously forward moves of the robot while using sensors to measure the distance on the right side, checking if the detected space is large enough for parking (greater than the required length). If a valid parking space is detected, the robot proceeds to execute the parking maneuver.
++ ***The `parallel_parking` function:*** Performs the actual maneuver: the robot first moves forward to align itself with the space, then turns to the right while moving backward to start entering the space, and finally, it turns left to straighten itself and continue reversing into the spot.
++ ***The `main_loop` function:*** Running continuously, it will check for parking spaces and initialize the parking maneuver once a suitable space is found. The program terminates after the robot successfully parks.
