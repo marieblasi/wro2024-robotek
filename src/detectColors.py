@@ -1,26 +1,48 @@
+# imported our libraries and archives
 import cv2
 from PIL import Image
 from util import get_limits
-#info de la webcam
-cap = cv2.VideoCapture(1)
+import numpy as np
 
-red = [40, 20, 150]
-blue = [30, 20, 150]
+# webcam info
+cap = cv2.VideoCapture(0)
 
-while True:
-    ret, frame = cap.read()
+
+## DEFINITIONS
+
+# detecting objects
+def detect_object(frame, color):
     hsvImage = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    lowerLimit, upperLimit = get_limits(color=red)
+    lowerLimit, upperLimit = get_limits(color)
     mask = cv2.inRange(hsvImage, lowerLimit, upperLimit)
     mask_ = Image.fromarray(mask)
     bbox = mask_.getbbox()
+    cv2.imshow("frame", frame)  # shows the camera
 
     if bbox is not None:
-        x1, y1, x2, y2 = bbox
-        frameWithBbox = cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 5)
-        cv2.imshow("frame", frameWithBbox)
-    else:
-        cv2.imshow("frame", frame)
+        return bbox  # returns (x1, y1, x2, y2)
+    return None
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+# analyze width and color of frames
+def analyze_sides(frame):
+    # converts the frame to grayscale
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    
+    # get the dimensions of the frame
+    height, width = gray.shape
+    
+    # define the regions of interest (ROI) for left and right sides
+    left_roi = gray[:, :width//2]
+    right_roi = gray[:, width//2:]
+    
+    # calculate the average brightness of each ROI
+    left_brightness = np.mean(left_roi)
+    right_brightness = np.mean(right_roi)
+    
+    # cetermine which side is brighter (whiter)
+    if left_brightness > right_brightness:
+        return "left", left_brightness, right_brightness
+    elif right_brightness > left_brightness:
+        return "right", left_brightness, right_brightness
+    else:
+        return "equal", left_brightness, right_brightness
