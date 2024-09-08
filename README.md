@@ -190,8 +190,6 @@ We proceeded to print our first prototype using 3D printing. Once we had all the
 We used the MicroSD card to connect to one of the computers, which we then linked to the Wi-Fi network. We configured its MicroSD card and began developing the code. This includes the modules for `motor.py`, `detectColors.py`, `ser.py`, and `main.py`.
 
 #### Step by Step
-
-+ #### Step 1: `ser.py`
   
   + ***Visual Studio Code:*** We opened Visual Studio Code and imported this library.
   ```
@@ -256,11 +254,78 @@ We printed the prototype for the third and final time, adding an additional leve
   </p>
   
 ---
-### *3.9 Main code* (Continuation of *Code for Raspberry PI 4*)
+### *3.9 Main code* 
 
-#### Step by Step
+In `main.py`, we wrote our code for the open challenge. As we tried to solve the problem of the corners and the fast detection of the walls within the three (3) minutes given, we decided to create a user-friendly code that could use the walls to find a midpoint to follow. We imported libraries such as `cv2` for camera input, `gpiozero` to control the robot with a button, and sensor/motor functions from our other documents `motor.py` and `ser.py`. After initializing the robot’s camera and setting up the `PID control` constants, the program will wait for the user to press a button to start. Then, our code is descomposed into four (4) possible steps, according  to the situation, within a loop:
+```
+while True:    
+    # it reads the camera and sensors 
+    ret, frame = cap.read()
+    sensor_values = read_sensors() 
+    
+    # specify sensors and the camera angles
+    if sensor_values:
+        # distance sensors
+        dist_l, dist_t, dist_r, qtr_L, qtr_R = sensor_values
+        steering_change = pid_control(dist_l, dist_r)
+        # camera direction
+        cam_direction = analyze_sides(frame)
+        print(f"Cam Direction: {cam_direction}")
 
-+ #### Step 2: `main.py`
+        # FIRST CASE (if near the walls)
+        if dist_t < 18 or dist_l < 10 or dist_r < 10:
+            ...
+            e = abs(dist_l - dist_r)  # defining the error value
+
+            # if there is space left...
+            if e > 50:
+                # you follow the SENSORS
+                # if left distance is greater that right's...
+                if dist_l > dist_r:
+                    ...
+                # if right distance is greater that left's...
+                elif dist_r > dist_l:
+                    ...
+            else:
+                # you follow the CAMERA
+                # if you see more space at the front-right side...
+                if cam_direction == "right":  
+                    ...
+                # if you see more space at the front-left side...
+                elif cam_direction == "left":
+                    ...
+                # if you see the same amount of space at both sides...
+                else:
+                    ...
+        
+        # SECOND CASE (if there are no walls near)
+        elif dist_t > 55 and dist_r > 40 and dist_l >40:
+            ...
+        
+        # THIRD CASE (when space at both sides)
+        elif dist_r > 55 and dist_l > 55:
+            # you follow the CAMERA
+            # when going to the left...
+            if cam_direction == "left":
+                    ...
+            # when going to the right...
+            elif cam_direction == "right":
+                    ...
+            # when going forward...
+            else:
+                    ...
+
+        # FOURTH CASE (follow the steer logic)
+        else:
+           steer_logic(steering_change)  
+    
+    # delay
+    sleep(0.05)
+    
+    # SHOW THE CAMERA (if desired)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+```
 
 ---
 ### *3.10 Code for avoiding obstacles*
