@@ -254,16 +254,23 @@ A PID controller adjusts system behavior by comparing a desired target value (se
 
 The combination of these three terms allows the PID controller to correct the system’s course precisely, leading it to the desired state without oscillation, instability, or excessive delay.
 
-#### *Why PID Controller?*
-- Precise and Stable Control: PID controllers offer precise control over processes, especially in systems that require stable and accurate responses, like temperature control in HVAC systems, speed control in motors, or flow control in pipelines.
-- Versatile and Widely Applicable: PID controllers are effective across various industries, from manufacturing to automotive and chemical processing, because they adapt well to different types of processes and can be tuned to specific needs.
-- Reduces Overshoot and Steady-State Error: By balancing the proportional, integral, and derivative terms, PID controllers minimize overshoot (exceeding the target) and eliminate steady-state error (any persistent difference from the target), leading to more accurate outcomes.
-- Improves System Stability and Response Time: PID controllers can adjust system responses to be faster or slower, depending on the application, achieving a balance between speed and stability. This is essential for processes where rapid response and minimal oscillation are needed.
-- Ease of Implementation and Tuning: Although more advanced controllers exist, PID is simpler to implement, requiring just three parameters to tune. Many tuning methods exist, making it straightforward to customize for different systems.
+#### *Why PID Controllers?*
+- Offer precise control over processes, especially in systems that require stable and accurate responses, like temperature control in HVAC systems, speed control in motors, or flow control in pipelines.
+- Are effective across various industries, from manufacturing to automotive and chemical processing, because they adapt well to different types of processes and can be tuned to specific needs.
+- By balancing the proportional, integral, and derivative terms, they minimize overshoot (exceeding the target) and eliminate steady-state error (any persistent difference from the target), leading to more accurate outcomes.
+- Can adjust system responses to be faster or slower, depending on the application, achieving a balance between speed and stability. This is essential for processes where rapid response and minimal oscillation are needed.
+- Is simpler to implement although more advanced controllers exist, requiring just three parameters to tune. Many tuning methods exist, making it straightforward to customize for different systems.
 
-### *6.2 Designing and printing the last prototype*
+### *6.2 Designing and printing the third prototype*
 
-We printed the prototype for the third and final time, adding an additional level to better distribute the components and provide a mount for the *webcam*. We also slightly modified the design of the motor mount to fit the *PowerBank 12000mAh*, ensuring a perfect fit and a more efficient arrangement of all elements. We added 2 *QRT 1A Sensors* to improve the precision of environmental sensing while a *MPU6050 Accelerometer & Gyroscope Sensor* was included to enhance stability and orientation control. We changed the engine and adjusted the *Gear ratio* to provide better torque for handling challenging terrain. After, upgrading our batteries to *LiPo cells* to increase power capacity and efficiency, a *camera* was mounted for real-time visual feedback, and a *push button*, for easy interaction. We decided to change the metal wheels to plastic ones for their lightweight properties, and the front wheels’ support was reinforced with ball bearings to reduce friction and ensure smoother movement.
+We printed the prototype for the third time:
+#### What we change:
+- Added an additional level to better distribute the components and provide a mount for the *webcam*.
+- Slightly modified the design of the motor mount to fit the *PowerBank 12000mAh*, ensuring a perfect fit and a more efficient arrangement of all elements.
+- Added 2 *QRT 1A Sensors* to improve the precision of environmental sensing while a *MPU6050 Accelerometer & Gyroscope Sensor* was included to enhance stability and orientation control.
+- Changed the engine and adjusted the *Gear ratio* to provide better torque for handling challenging terrain.
+- After, upgrading our batteries to *LiPo cells* to increase power capacity and efficiency, a *camera* was mounted for real-time visual feedback, and a *push button*, for easy interaction.
+- Change the metal wheels to plastic ones for their lightweight properties, and the front wheels’ support was reinforced with ball bearings to reduce friction and ensure smoother movement.
 
 <p align = "center">
   <img src = "https://github.com/user-attachments/assets/d4e2e5f6-b742-464e-b3f9-be03cae16b6d", width = "650px">
@@ -373,3 +380,9 @@ We defined our robot's code for the parallel parking system, consisting of three
 ---
 ## *Final Version!*
 ### *7.1 Strategy*
+### *7.2 Designing and printing the final prototype*
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/3875dfb9-88ba-4854-b978-0ba94a29dcd8", width = "650px">
+  </p>
+
