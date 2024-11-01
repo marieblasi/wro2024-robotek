@@ -148,7 +148,7 @@ By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, relia
   </p>
 
 ---
-## First Version!*
+## First Version!
 ### *4.1 Code for the camera*
 
 We started by making the code for the camera. On it, we made the camera descompose the image into pixels, which detected the color it sees in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
@@ -227,7 +227,7 @@ We used an Arduino Nano and developed the code, which, along with Sharp sensors,
 + ***`setup()` function:*** The QTR sensors were configured to operate in analog mode using `qtra.setTypeAnalog()` and the pins A3 and A4 were specified as inputs for the reflectance sensors via qtra.setSensorPins().
 + ***`loop()` function:*** It then read the analog values from the three Sharp IR sensors using `analogRead()` and calculated the distance to nearby objects using the `distance()` function for each sensor. Finally, the distances from the three Sharp sensors, along with the reflectance sensor values, were printed to the serial monitor using `Serial.print()`, separated by commas with a 300 ms delay (`delay(300)`) per information.
 ---
-## Second Version!*
+## Second Version!
 ### *5.1 Designing and printing the second prototype*
 
 We redesigned the prototype after realizing that we needed to adapt the new components to the cart. We 3D printed only the essential parts, such as the steering system and motor mounts, while the rest was cut from acrylic to keep the structure light and sturdy.
