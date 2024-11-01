@@ -122,24 +122,18 @@ We decided to use these components:
 | Switch Button | 1 | Button that signals the Raspberry Pi to start its routine. |
 | Push Button | 1 | Button that powers the system. |
 
-### Reasons for choosing our sensors
+### Reasons for choosing our sensors and camera
 
-By choosing **QTR-1A** and **Sharp GP2Y0A21** sensors, you ensure precise, reliable, and cost-effective solutions for our robot.
++ STL-19P TOF Lidar:
 
-+ QTR-1A Sensors:
+  + ***Precise environmental mapping***: With its ±10mm accuracy, the STL-19P enables precise positioning, essential for navigating narrow or intricate sections of the obstacle course. This allows our robot to make calculated movements without collisions or deviations.
+  + ***Real-time obstacle avoidance***: With its fast sampling rate, the LiDAR can detect and react to obstacles dynamically, ensuring smoother movement through the course.
+  + ***Enhanced performance in varied lighting***: Its high tolerance for ambient light up to 60,000 lux and ability to detect glass is essential, where lighting conditions vary. This feature ensures our robot maintains consistent performance, accurately detecting objects and avoiding potential pitfalls like transparent or shiny obstacles.
 
-  + ***Fast response and high precision for line detection:*** We need a high-speed robot that operates in fast-moving applications. Having the need of real-time feedback for quick adjustments and control, we chose the sensor for its rapid signal process and using the infrared LED and phototransistor pair we detect the surface lines and light.
-  + ***Compact and low power consumption:*** The small footprint allows easy integration into compact designs without adding extra weight and, also, help us optimize energy efficiency in battery-operated systems like ours, allowing us to conserve battery life for the competition.
- 
-+ Sharp GP2Y0A21 IR Sensors:
++ Monocular Camera:
 
-  + ***Accurate distance measurement:*** It can be integrated with microcontrollers and other analog signal processing systems to provide precise distance readings in the obstacle detection task by using the infrared triangulation technology to measure distances from 10 cm to 80 cm 
-  + ***Reliable and durable:*** The sensor is known for its long-lasting performance and efficiently operation in a wide range of conditions, not only during variations in temperature or humidity, but when there is light interference from the surrounding environment, too, wichi we think could possibly happen during the competition.
-
-+ MPU6050 Accelerometer & Gyroscope Sensor:
-  
-  + ***Motion tracking:*** With both an accelerometer and gyroscope, we can precisely track the robot’s movement and angular velocity to determine our robot's speed, direction, and turns. Moreover, it provides real-time feedback on the robot's orientation (pitch, roll, and yaw), allowing it to maintain balance and stability.
-  + ***Inertial navigation:*** * The sensor will allow us to perform dead reckoning, estimating our robot’s position based on movement data even in environments without GPS. Also, we will detect impacts and take evasive actions, making the robot smarter in navigating through dynamic environments.
+  + ***Color detection***: Since graphical color detection is a core part of your project, the camera can precisely identify various colors on the course. This enables our robot to execute programmed actions based on specific color cues, which is crucial for the Obstacle challenge, which requires interaction with color-based objects.
+  + ***Spatial awareness through data fusion***: When combining camera data with our sensor, the robot gains a richer understanding of its environment. The camera provides detailed visual context that complements other data sources, leading to a more informed and adaptable navigation strategy.
 
 ### Wiring diagram
 
