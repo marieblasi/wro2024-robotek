@@ -12,8 +12,8 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 + Teammates: ***Mafer Zambrano & Isa Gonzales***
 + Match Name: ***Robotek***
 
-- [1. 🤖 About us!](#39-about-us!)
-  - [1.1 🌟 Team presentation](#41-team-presentation)
+- [1. 🤖 About us!](#1-about-us!)
+  - [1.1 🌟 Team presentation](#11-team-presentation)
   - [1.2 🚀 Our Goal](#12-our-goal)
 - [2.0 🛠️ Hardware](#2-hardware)
   - [2.1 🔧 Components](#21-components)
@@ -50,7 +50,7 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 | :---: | :---: | :---: |
 | **Name** | Isabella Gonzales | Maria Fernanda Zambrano |
 | **Age** | 15 | 17 |
-| **Role** |  |  |
+| **Role** | Electronics and Technical Designer | Programming and Technical Analyst |
 | **Extra** | I love music (singing and playing the guitar), making origami, and painting. A fun fact about me is that I sang in the National Theather wearing pijamas when I was 6. | Some of my hobbies are swimming, reading, and playing instruments. A fun fact about me is that I am a huge F1 fan! |
 
 ### 1.2 Team Management
