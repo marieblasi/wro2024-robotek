@@ -29,11 +29,11 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
   - [3.5 ⚙️ Ackermann System](#35-ackermann-system)
 - [4. 🔋 Power and Sense Management](#4-power-and-sense-management)
   - [4.1 🔌 Power Distribution Diagram](#41-power-distribution-diagram)
-  - [4.2 📷 Reasons for Using Our Sensors and Camera](#42-reasons-for-using-our-sensors-and-camera)
-    - [4.2.1 🤖 STL-19P TOF Lidar](#421-stl-19p-tof-lidar)
-    - [4.2.2 📷 Monocular Camera](#422-monocular-camera)
-  - [4.3 ⚡ Power Source](#43-power-source)
-    - [4.3.1 🔋 Charger](#431-charger)
+  - [4.2 ⚡ Power Source](#42-power-source)
+    - [4.2.1 🔋 Charger](#421-charger)
+  - [4.3 📷 Reasons for Using Our Sensors and Camera](#43-reasons-for-using-our-sensors-and-camera)
+    - [4.3.1 🤖 STL-19P TOF Lidar](#431-stl-19p-tof-lidar)
+    - [4.3.2 📷 Monocular Camera](#432-monocular-camera)
 - [5. 🏎️ Building the Robot](#5-building-the-robot)
   - [5.1 🖨️ Designing, Printing, and Ensembling](#51-designing-printing-and-ensembling)
   - [5.2 📍 Code for the Camera](#52-code-for-the-camera)
@@ -105,7 +105,7 @@ ROS (Robot Operating System) is an open-source software framework designed to de
  
  1. ***Integration of Sensors and Actuators:*** With ROS, we can easily connect and coordinate multiple sensors and actuators within a single system. This allows each component to work together seamlessly, providing our autonomous car with continuous information about its surroundings and optimizing the overall system performance.
  2. ***Environmental Perception with LiDAR:*** By using LiDAR, we obtain precise 360-degree distance data, which is essential for detecting obstacles and walls. ROS packages like `laser_scan_matcher` and `gmapping` help us process this data to create real-time maps of the environment.
- 3. ***Autonomous Navigation and Path Planning:*** ROS provides us with advanced navigation tools, such as move_base, which allow our car to plan optimal routes and adjust them in real-time. This is particularly important for the Ostacle Challenge. With ROS, we can combine data from various sensors to make real-time decisions about the path.
+ 3. ***Autonomous Navigation and Path Planning:*** ROS provides us with advanced navigation tools, such as `move_base`, which allow our car to plan optimal routes and adjust them in real-time. This is particularly important for the Ostacle Challenge. With ROS, we can combine data from various sensors to make real-time decisions about the path.
  4. ***Efficient Simulation and Debugging:*** We simulate the car’s behavior in virtual environments like `Gazebo` to prevent physical damage during testing and to fine-tune our parameters. Additionally, tools like rviz let us visualize sensor data and the car’s status in real-time, which makes debugging much easier.
 
 ## 3. Mobility Management
@@ -156,29 +156,39 @@ The two motors are connected to an axle in the rear space, which allows the whee
 
 ### 4.1 Power distribution diagram
 
-### 4.2 Reasons for Using Our Sensors and Camera
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/8b9986c4-6b11-4f09-9e0e-405dae94d4fd">
+  </p>
 
-#### 4.2.1 STL-19P TOF Lidar:
+### 4.2 Power Source
+
+The battery powering the autonomous car is a ***Lithium Polymer (Li-poly)*** type with a capacity of 2200 mAh and a nominal voltage of 7.4V. This battery was chosen specifically to meet the energy demands of the system, providing enough power to run both the Raspberry Pi and the vehicle's motors simultaneously. With a discharge capacity of 20C, the battery ensures a consistent energy supply, which is essential for maintaining system performance in high-demand applications like autonomous operation and real-time data processing.
+
+#### 4.2.1 Charger:
+The charging system for the autonomous car consists of an ***AC Charger*** specifically designed for lithium polymer (Li-poly) batteries. This charger operates at an output voltage of 7.4V and provides a steady and safe current for the 2200 mAh battery, ensuring efficient charging without overheating. The charger's design allows for a quick and secure connection to the vehicle, ensuring a full and rapid charge to keep the car's systems operating optimally.
+
+### 4.3 Reasons for Using Our Sensors and Camera
+
+#### 4.3.1 STL-19P TOF Lidar:
 
   + ***Precise environmental mapping***: With its ±10mm accuracy, the STL-19P enables precise positioning, essential for navigating narrow or intricate sections of the obstacle course. This allows our robot to make calculated movements without collisions or deviations.
   + ***Real-time obstacle avoidance***: With its fast sampling rate, the LiDAR can detect and react to obstacles dynamically, ensuring smoother movement through the course.
   + ***Enhanced performance in varied lighting***: Its high tolerance for ambient light up to 60,000 lux and ability to detect glass is essential, where lighting conditions vary. This feature ensures our robot maintains consistent performance, accurately detecting objects and avoiding potential pitfalls like transparent or shiny obstacles.
+
+> [!IMPORTANT]
+> **Placement:**
+> It was positioned at an altitude of under 10 cm, so it is able to detect the walls of the path, which are also 10 cm high. This placement ensures the Lidar has a clear view of the obstacles while remaining unobstructed by other components. All other elements on the car were arranged to avoid blocking the Lidar’s line of sight.
+> <img width="1206" alt="Screenshot 2024-11-10 at 18 18 03" src="https://github.com/user-attachments/assets/9e9d9df4-cfc6-4875-b832-435c4d2ebb1c">
   
-#### 4.2.2 Monocular Camera:
+#### 4.3.2 Monocular Camera:
 
   + ***Color detection***: Since graphical color detection is a core part of your project, the camera can precisely identify various colors on the course. This enables our robot to execute programmed actions based on specific color cues, which is crucial for the Obstacle challenge, which requires interaction with color-based objects.
   + ***Spatial awareness through data fusion***: When combining camera data with our sensor, the robot gains a richer understanding of its environment. The camera provides detailed visual context that complements other data sources, leading to a more informed and adaptable navigation strategy.
 
-### 4.3 Power Source
-
-The battery powering the autonomous car is a ***Lithium Polymer (Li-poly)*** type with a capacity of 2200 mAh and a nominal voltage of 7.4V. This battery was chosen specifically to meet the energy demands of the system, providing enough power to run both the Raspberry Pi and the vehicle's motors simultaneously. With a discharge capacity of 20C, the battery ensures a consistent energy supply, which is essential for maintaining system performance in high-demand applications like autonomous operation and real-time data processing.
-
-#### 4.3.1 Charger:
-The charging system for the autonomous car consists of an ***AC Charger*** specifically designed for lithium polymer (Li-poly) batteries. This charger operates at an output voltage of 7.4V and provides a steady and safe current for the 2200 mAh battery, ensuring efficient charging without overheating. The charger's design allows for a quick and secure connection to the vehicle, ensuring a full and rapid charge to keep the car's systems operating optimally.
-
-
-
-
+> [!IMPORTANT]
+> **Placement:**
+> It was located at the front of the car, providing a front-facing view from the car and enhancing the car's ability to detect and classify obstacles by color.  This location allows the camera to complement the Lidar without interference, capturing detailed visual information about the obstacles.
+> <img width="1049" alt="Screenshot 2024-11-10 at 18 17 18" src="https://github.com/user-attachments/assets/198d3541-ec12-4232-97b8-b4fb0fde5850">
 
 
 ## 5. Building the Robot
