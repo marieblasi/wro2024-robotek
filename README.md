@@ -26,7 +26,9 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
   - [3.2 🔌 Wiring Diagram](#32-wiring-diagram)
   - [3.3 🧰 Reasons for Using Our Motors](#33-reasons-for-using-our-motors)
   - [3.4 ⚙️ Motors Axle System](#34-motors-axle-system)
-  - [3.5 ⚙️ Ackermann System](#35-ackermann-system)
+  - [3.5 ⚙️ Ackermann Steering System](#35-ackermann-steering-system)
+    - [3.5.1 How does the System Works](#351-how-does-the-system-works)
+    - [3.5.2 Enhanced Precision](352-enhanced-precision)
 - [4. 🔋 Power and Sense Management](#4-power-and-sense-management)
   - [4.1 🔌 Power Distribution Diagram](#41-power-distribution-diagram)
   - [4.2 ⚡ Power Source](#42-power-source)
@@ -45,8 +47,7 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
   - [6.3 🔒 Parking Strategy](#63-parking-strategy)
 
 ## 1. About us!
-
-### 1.1 Team presentation
+### 1.1 Team Presentation
 
 <p align = "center">
   <img src = "https://github.com/user-attachments/assets/664a8f36-87c0-433d-9845-4cd4cd0c1975">
@@ -60,22 +61,17 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 | **Extra** | I love music (singing and playing the guitar), making origami, and painting. A fun fact about me is that I sang in the National Theather wearing pijamas when I was 6. | Some of my hobbies are swimming, reading, and playing instruments. A fun fact about me is that I am a huge F1 fan! |
 
 ### 1.2 Team Management
-
 Our project is the product of a collaborative effort by a talented and dedicated team, with each member contributing their unique expertise. As students of Robotek from Lima, Peru, we have learned valuable skills in robotics and technology. 
-
 + ***Team Supervisor:*** Alejandro Garayar
 + ***Coach:*** Renzo Damian
 
-### 1.3 Reasons to participate
-
+### 1.3 Reasons to Participate
 We see this project as more than just a competition. It is a chance to be creative, work together, and overcome challenges—both in the design and in ourselves. By designing our robot, we are not creating just a machine but a mixture of our electronic and coding skills, and innovation.
 
 This experience has reminded us that endorsing difficulties means finding solutions where others see problems and that we can have fun and enjoy the process. So, we thank being part of this olympiad: it has pushed us beyond the limits, broadening our minds, and, most of all, we had a great time!
 
-## 2. About the car!
-
-### 2.1 Our autonomous car's logic
-
+## 2. About the Car!
+### 2.1 Our Autonomous Car's Logic
 1. The program will begin by initializing the LIDAR sensor, the monocular camera, and the necessary variables for lap counting and timing. Once started, the car will enter a continuous loop where the main function will run repeatedly.
 2. During each loop iteration, the LIDAR captures environmental data to detect walls and calculate the distance to the circuit’s boundaries. Then, the system will analyze the LIDAR data to maintain a safe distance from the black walls. If the car gets too close to a wall, it will adjust its direction and reduce speed to avoid collisions, helping it stay on course.
 3. The camera and LIDAR will be used together to identify specific reference points on the circuit for lap counting. Once the car has passed the same reference point three times, it will be considered to have completed the required laps. A timer will monitor the elapsed time, adjusting speed if needed to stay within the three-minute target.
@@ -91,25 +87,20 @@ This experience has reminded us that endorsing difficulties means finding soluti
   </p>
 
 ### 2.3 Why Python?
-
 Python is a widely used language, representing the best. It is used for fast and flexible development and, also, implemented for tasks that require high performance providing a solution for a system like ours, where we need to control hardware while efficiently processing data at the same time. We use it for the following advantages:
-
 1. ***Strong language:*** Python is known for being a high-level language, easy to write and read, and excellent for rapid development, proof of concepts, and handling complex tasks such as data analysis, hardware control, and machine learning.
 2. ***Management of libraries:*** This language contains a large number of easy-to-use libraries, ranging from web interface management, computer vision, and network handling to direct hardware manipulation. This allows for efficient work and rapid development of advanced functionalities without having to program them from scratch.
 3. ***Use in different platforms:*** We can use Python on boards like the Raspberry Pi for general control tasks, vision, etc., where Python is commonly used because it offers extensive libraries that facilitate interaction with the operating system. 
 4. ***Performance and flexibility:*** Python can be used for greater flexibility in handling advanced logic, such as data manipulation and integration with interfaces.
 
 ### 2.4 Why ROS?
-
 ROS (Robot Operating System) is an open-source software framework designed to develop and control robots. ROS has become a standard in modern robotics due to its flexibility, modularity, and large community of developers. We use it for the following reasons: We use it for the following advantages:
- 
  1. ***Integration of Sensors and Actuators:*** With ROS, we can easily connect and coordinate multiple sensors and actuators within a single system. This allows each component to work together seamlessly, providing our autonomous car with continuous information about its surroundings and optimizing the overall system performance.
  2. ***Environmental Perception with LiDAR:*** By using LiDAR, we obtain precise 360-degree distance data, which is essential for detecting obstacles and walls. ROS packages like `laser_scan_matcher` and `gmapping` help us process this data to create real-time maps of the environment.
  3. ***Autonomous Navigation and Path Planning:*** ROS provides us with advanced navigation tools, such as `move_base`, which allow our car to plan optimal routes and adjust them in real-time. This is particularly important for the Ostacle Challenge. With ROS, we can combine data from various sensors to make real-time decisions about the path.
  4. ***Efficient Simulation and Debugging:*** We simulate the car’s behavior in virtual environments like `Gazebo` to prevent physical damage during testing and to fine-tune our parameters. Additionally, tools like rviz let us visualize sensor data and the car’s status in real-time, which makes debugging much easier.
 
 ## 3. Mobility Management
-
 ### 3.1 Bill of Materials (BOM)
 Component | Quantity | Function |
  :---: | :---: | :---: |
@@ -132,7 +123,6 @@ Component | Quantity | Function |
   </p>
 
 ### 3.3 Reasons for Using Our Motors
-
 We selected two 310 DC Geared Encoder Motors. These motors are installed on the vehicle's rear axle, offering the torque and speed necessary for both stability and maneuverability.
 
 <p align = "center">
@@ -143,34 +133,41 @@ We selected two 310 DC Geared Encoder Motors. These motors are installed on the 
 + ***Speed***: The motors run at 450 RPM at 7.4V, giving a balance between swift response and controlled movement. This speed is ideal for applications where moderate pace and precision are essential, avoiding abrupt or excessive acceleration.
 
 ### 3.4 Motors Axle System
-
 The two motors are connected to an axle in the rear space, which allows the wheels to support the weight of the car. This axle is essential for the car to move forward and backward efficiently, ensuring a smoother ride in curves and reducing tire wear. It improves vehicle stability, which is particularly important in tight corners or under variable road conditions.
 
 <p align = "center">
   <img src = "https://github.com/user-attachments/assets/ceaa0a0e-a276-4760-bf44-b892d148df29">
   </p>
 
-### 3.5 Ackermann System
+### 3.5 Ackermann Steering System
+Our autonomous car uses an Ackermann steering system, controlled by a 15 kg·cm digital servo, which provides precise and stable control for navigation and turns.
+#### 3.5.1 How does the System Works?
+The Ackermann steering geometry is designed to reduce tire slip by ensuring that all wheels align as radii of circles that share a common center when the car is turning. This configuration keeps the rear wheels fixed and places the center of rotation along a line extended from the rear axle. To achieve this geometry, the inside front wheel turns at a greater angle than the outside front wheel, allowing smoother and more efficient cornering.
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/669bde9f-9b57-4d71-b7bd-79a0b9665639">
+  </p>
+  
+#### 3.5.2 Enhanced Precision
+The high-torque digital servo enables the car to execute controlled, precise movements, making it ideal for navigating complex paths and obstacles. It allows the car to adjust its steering angle accurately and responsively, improving maneuverability and enabling smoother, more predictable turns.
 
 ## 4. Power and Sense Management
-
-### 4.1 Power distribution diagram
+### 4.1 Power Distribution Diagram
 
 <p align = "center">
   <img src = "https://github.com/user-attachments/assets/8b9986c4-6b11-4f09-9e0e-405dae94d4fd">
   </p>
-
+  
 ### 4.2 Power Source
-
 The battery powering the autonomous car is a ***Lithium Polymer (Li-poly)*** type with a capacity of 2200 mAh and a nominal voltage of 7.4V. This battery was chosen specifically to meet the energy demands of the system, providing enough power to run both the Raspberry Pi and the vehicle's motors simultaneously. With a discharge capacity of 20C, the battery ensures a consistent energy supply, which is essential for maintaining system performance in high-demand applications like autonomous operation and real-time data processing.
-
 #### 4.2.1 Charger:
 The charging system for the autonomous car consists of an ***AC Charger*** specifically designed for lithium polymer (Li-poly) batteries. This charger operates at an output voltage of 7.4V and provides a steady and safe current for the 2200 mAh battery, ensuring efficient charging without overheating. The charger's design allows for a quick and secure connection to the vehicle, ensuring a full and rapid charge to keep the car's systems operating optimally.
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/ce21d737-9f0d-4317-855f-baacd6b274f7">
+  </p>
 
 ### 4.3 Reasons for Using Our Sensors and Camera
-
 #### 4.3.1 STL-19P TOF Lidar:
-
   + ***Precise environmental mapping***: With its ±10mm accuracy, the STL-19P enables precise positioning, essential for navigating narrow or intricate sections of the obstacle course. This allows our robot to make calculated movements without collisions or deviations.
   + ***Real-time obstacle avoidance***: With its fast sampling rate, the LiDAR can detect and react to obstacles dynamically, ensuring smoother movement through the course.
   + ***Enhanced performance in varied lighting***: Its high tolerance for ambient light up to 60,000 lux and ability to detect glass is essential, where lighting conditions vary. This feature ensures our robot maintains consistent performance, accurately detecting objects and avoiding potential pitfalls like transparent or shiny obstacles.
@@ -181,7 +178,6 @@ The charging system for the autonomous car consists of an ***AC Charger*** speci
 > <img width="1206" alt="Screenshot 2024-11-10 at 18 18 03" src="https://github.com/user-attachments/assets/9e9d9df4-cfc6-4875-b832-435c4d2ebb1c">
   
 #### 4.3.2 Monocular Camera:
-
   + ***Color detection***: Since graphical color detection is a core part of your project, the camera can precisely identify various colors on the course. This enables our robot to execute programmed actions based on specific color cues, which is crucial for the Obstacle challenge, which requires interaction with color-based objects.
   + ***Spatial awareness through data fusion***: When combining camera data with our sensor, the robot gains a richer understanding of its environment. The camera provides detailed visual context that complements other data sources, leading to a more informed and adaptable navigation strategy.
 
@@ -193,7 +189,6 @@ The charging system for the autonomous car consists of an ***AC Charger*** speci
 
 ## 5. Building the Robot
 ### *5.1 Designing, Printing, and Ensembling*
-
 What we changed:
 + Added an additional level to better distribute the components and provide a mount for the webcam.
 + Slightly modified the design of the motor mount to fit the PowerBank 12000mAh, ensuring a perfect fit and a more efficient arrangement of all elements.
@@ -206,7 +201,7 @@ What we changed:
   <img src = "https://github.com/user-attachments/assets/dca1240a-ef3a-4b02-b663-73f74957ab60", width = "650px">
   </p>
 
-### *5.2 Code for the camera*
+### *5.2 Code for the Camera*
 
 We started by making the code for the camera. On it, we made the camera descompose the image into pixels, which detected the color it sees in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
 
