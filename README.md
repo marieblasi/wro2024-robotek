@@ -2,48 +2,60 @@ Welcome 🤩 !
 We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 ====
 <p align = "center">
-  <img src = "https://github.com/user-attachments/assets/d41e4236-aab7-4a30-a2f4-86d483993c72">
+  <img src = "https://github.com/user-attachments/assets/196f69c0-0233-43e6-970e-4f6ab1ee7f02">
   </p>
+
+## **Table of Contents**
 
 + Team's Name: ***Révine***
 + Car's Name: ***Riska***
 + Teammates: ***Mafer Zambrano & Isa Gonzales***
 + Match Name: ***Robotek***
 
-## About us!
+- [1. 🤖 About us!](#39-about-us!)
+  - [1.1 🌟 Team presentation](#41-team-presentation)
+  - [1.2 🚀 Our Goal](#12-our-goal)
+- [2.0 🛠️ Hardware](#2-hardware)
+  - [2.1 🔧 Components](#21-components)
+    - [2.1.1 ⚡ Power Source](#211-power-source)
+    - [2.1.2 🧱 Construction Materials](#212-construction-materials)
+    - [2.1.3 🔌 Connectors and Cables](#213-connectors-and-cables)
+    - [2.1.4 🛠️ Tools and Adhesives](#214-tools-and-adhesives)
+    - [2.1.5 💡 Other Electronic Components](#215-other-electronic-components)
+- [3.0 Models](#3-models)
+  - [3.1 PCB Board](#31-pcb-board)
+  - [3.2 Ackerman Steering System](#32-ackerman-steering-system)
+  - [3.3 Differential System](#33-differential-system)
+    - [3.3.1 Motors](#331-motors)
+- [4.0 TOF System](#4-tof-system)
+  - [4.1 First Phase](#41-first-phase)
+  - [4.2 Second Phase](#42-second-phase)
+  - [4.3 Third Phase](#43-third-phase)
+- [5.0 Sensores](#50-sensores)
+  - [5.1 TSC3200 color sensor](#51-tsc3200-color-sensor)
+  - [5.2 ESP32 CAM](#52-esp32-cam)
+    - [5.2.1 CODE ESP32 CAM](#521-code-esp32-cam)
+
+## 1. About us!
 
 ### 1.1 Team presentation
 
 <p align = "center">
-  <img src = "https://github.com/user-attachments/assets/e5ef3311-5d4e-47c4-966b-c02dc7470dbe",  width = "700px">
+  <img src = "https://github.com/user-attachments/assets/664a8f36-87c0-433d-9845-4cd4cd0c1975">
   </p>
 
 ---
-### *Maria Fernanda Zambrano*
-🥈 🧑‍🚀 🦢 🏛️ 🎧 🏎️ 🏁 🚀 🌙 🔭 
 
-Age: 17
-
-Hi! My name is Mafer and I am from Peru. Some of my hobbies are swimming, reading, and playing instruments. A fun fact about me is that I am a huge F1 fan!
-
----
-<p align = "center">
-  <img src = "https://github.com/user-attachments/assets/0ae75f01-ae9e-49fe-a418-98b065694f57",  width = "700px">
-  </p>
-
-### *Isabella Gonzales*
-🐨 🤖 🥐 🌟 🥋 🎨 🎼 🥧 🍀
-
-Age: 15
-
-Hello! 
-My name is Isa and I am from Peru. 
-I love music (singing and playing the guitar), making origami, and painting. 
-A fun fact about me is that I sang in the National Theather wearing pijamas when I was 6.
+|  | 🐨 🤖 🥐 🌟 🥋 🎨 🎼 🥧 🍀 | 🥇 🧑‍🚀 🦢 🏛️ 🎧 🏎️ 🏁 🚀 🌙 🔭 |
+| :---: | :---: | :---: |
+| **Name** | Isabella Gonzales | Maria Fernanda Zambrano |
+| **Age** | 15 | 17 |
+| **Role** |  |  |
+| **Extra** | I love music (singing and playing the guitar), making origami, and painting. A fun fact about me is that I sang in the National Theather wearing pijamas when I was 6. | Some of my hobbies are swimming, reading, and playing instruments. A fun fact about me is that I am a huge F1 fan! |
 
 ### 1.2 Team Management
 
-Our project is the product of a collaborative effort by a talented and dedicated team, with each member contributing their unique expertise. As students of Robotek from Lima, Peru, we have learned valuable skills in robotics and technology. To learn more about our history and participations, follow us on [Instagram](https://www.instagram.com/ro_bo_tek?igsh=MXZydWFtamlzbHd4ag==).
+Our project is the product of a collaborative effort by a talented and dedicated team, with each member contributing their unique expertise. As students of Robotek from Lima, Peru, we have learned valuable skills in robotics and technology. 
 
 + ***Team Supervisor:*** Alejandro Garayar
 + ***Coach:*** Renzo Damian
