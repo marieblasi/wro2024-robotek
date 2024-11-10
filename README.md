@@ -5,12 +5,12 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
   <img src = "https://github.com/user-attachments/assets/196f69c0-0233-43e6-970e-4f6ab1ee7f02">
   </p>
 
-## **Table of Contents**
-
 + Team's Name: ***Révine***
 + Car's Name: ***Riska***
 + Teammates: ***Mafer Zambrano & Isa Gonzales***
 + Match Name: ***Robotek***
+
+## **Table of Contents**
 
 - [1. 🤖 About us!](#1-about-us)
   - [1.1 🌟 Team presentation](#11-team-presentation)
@@ -24,9 +24,16 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 - [3. ⚙️ Mobility Management](#3-mobility-management)
   - [3.1 🧱 Bill of Materials (BOM)](#31-bill-of-materials-bom)
   - [3.2 🔌 Wiring Diagram](#32-wiring-diagram)
+  - [3.3 🧰 Reasons for Using Our Motors](#33-reasons-for-using-our-motors)
+  - [3.4 ⚙️ Motors Axle System](#34-motors-axle-system)
+  - [3.5 ⚙️ Ackermann System](#35-ackermann-system)
 - [4. 🔋 Power and Sense Management](#4-power-and-sense-management)
-  - [4.1 🧰 Reasons for Sensors and Camera](#41-reasons-for-sensors-and-camera)
-  - [4.2 ⚡ Power Distribution Diagram](#42-power-distribution-diagram)
+  - [4.1 🔌 Power Distribution Diagram](#41-power-distribution-diagram)
+  - [4.2 📷 Reasons for Using Our Sensors and Camera](#42-reasons-for-using-our-sensors-and-camera)
+    - [4.2.1 🤖 STL-19P TOF Lidar](#421-stl-19p-tof-lidar)
+    - [4.2.2 📷 Monocular Camera](#422-monocular-camera)
+  - [4.3 ⚡ Power Source](#43-power-source)
+    - [4.3.1 🔋 Charger](#431-charger)
 - [5. 🏎️ Building the Robot](#5-building-the-robot)
   - [5.1 🖨️ Designing, Printing, and Ensembling](#51-designing-printing-and-ensembling)
   - [5.2 📍 Code for the Camera](#52-code-for-the-camera)
@@ -69,58 +76,108 @@ This experience has reminded us that endorsing difficulties means finding soluti
 
 ### 2.1 Our autonomous car's logic
 
-1. The program will begin with the initialization of sensors, camera, and variables. Once started, the car will enter a continuous loop with the main function running endlessly. In each loop iteration, *it will capture a frame from the camera and will read input from various sensors*, including distance and reflectance sensors.
-2. The captured frame  is then analyzed to detect obstacles, and if one is found, its color is identified as either red or green. *The navigation strategy adjusts the car to pass on the right side for red obstacles and on the left side for green ones.* Steering adjustments are combined with the obstacle avoidance strategy to manage the car’s movement. The system also monitors proximity to obstacles, performing avoidance maneuvers if too close, reducing speed when necessary, or maintaining normal speed otherwise.
-3. The car moves forward based on the calculated steering and speed. *Reflectance sensors are used to count the number of laps completed.* If all required laps are finished, the car navigates to the parking area and performs parallel parking; if not, the loop continues. Finally, the program ends after successful parking or if interrupted.
+1. The program will begin by initializing the LIDAR sensor, the monocular camera, and the necessary variables for lap counting and timing. Once started, the car will enter a continuous loop where the main function will run repeatedly.
+2. During each loop iteration, the LIDAR captures environmental data to detect walls and calculate the distance to the circuit’s boundaries. Then, the system will analyze the LIDAR data to maintain a safe distance from the black walls. If the car gets too close to a wall, it will adjust its direction and reduce speed to avoid collisions, helping it stay on course.
+3. The camera and LIDAR will be used together to identify specific reference points on the circuit for lap counting. Once the car has passed the same reference point three times, it will be considered to have completed the required laps. A timer will monitor the elapsed time, adjusting speed if needed to stay within the three-minute target.
+4. ***For the Obstacle Challenge***, the monocular camera will capture a visual frame to detect the color of obstacles. During these maneuvers, the LIDAR will continue to monitor the proximity to the black walls to ensure a safe evasion without colliding. Basic computer vision algorithms will analyze each frame to determine the color:
+    + Red: If the obstacle is red, the car will adjust its path to pass on the right.
+    + Green: If the obstacle is green, the car will adjust to the left.
+5. After completing the three laps and avoiding all obstacles, the car will activate its parallel ***Parking Mode***. Using LIDAR, it will look for a suitable parking spot and, based on distance and angle calculations, perform a parallel parking maneuver.
 
 ### 2.2 Flow Diagram
 
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/d84a94ec-9524-4cf2-82c5-7b5040ac872d">
+  </p>
 
 ### 2.3 Why Python?
 
-Python is a widely used language, representing the best. It is used for fast and flexible development and, also, implemented for tasks that require high performance providing a solution for a system like ours, where we need to control hardware while efficiently processing data at the same time.
+Python is a widely used language, representing the best. It is used for fast and flexible development and, also, implemented for tasks that require high performance providing a solution for a system like ours, where we need to control hardware while efficiently processing data at the same time. We use it for the following advantages:
 
-1. ***Complementing the strengths of both languages:*** Python is known for being a high-level language, easy to write and read, and excellent for rapid development, proof of concepts, and handling complex tasks such as data analysis, hardware control, and machine learning.
+1. ***Strong language:*** Python is known for being a high-level language, easy to write and read, and excellent for rapid development, proof of concepts, and handling complex tasks such as data analysis, hardware control, and machine learning.
 2. ***Management of libraries:*** This language contains a large number of easy-to-use libraries, ranging from web interface management, computer vision, and network handling to direct hardware manipulation. This allows for efficient work and rapid development of advanced functionalities without having to program them from scratch.
 3. ***Use in different platforms:*** We can use Python on boards like the Raspberry Pi for general control tasks, vision, etc., where Python is commonly used because it offers extensive libraries that facilitate interaction with the operating system. 
 4. ***Performance and flexibility:*** Python can be used for greater flexibility in handling advanced logic, such as data manipulation and integration with interfaces.
 
 ### 2.4 Why ROS?
 
+ROS (Robot Operating System) is an open-source software framework designed to develop and control robots. ROS has become a standard in modern robotics due to its flexibility, modularity, and large community of developers. We use it for the following reasons: We use it for the following advantages:
+ 
+ 1. ***Integration of Sensors and Actuators:*** With ROS, we can easily connect and coordinate multiple sensors and actuators within a single system. This allows each component to work together seamlessly, providing our autonomous car with continuous information about its surroundings and optimizing the overall system performance.
+ 2. ***Environmental Perception with LiDAR:*** By using LiDAR, we obtain precise 360-degree distance data, which is essential for detecting obstacles and walls. ROS packages like `laser_scan_matcher` and `gmapping` help us process this data to create real-time maps of the environment.
+ 3. ***Autonomous Navigation and Path Planning:*** ROS provides us with advanced navigation tools, such as move_base, which allow our car to plan optimal routes and adjust them in real-time. This is particularly important for the Ostacle Challenge. With ROS, we can combine data from various sensors to make real-time decisions about the path.
+ 4. ***Efficient Simulation and Debugging:*** We simulate the car’s behavior in virtual environments like `Gazebo` to prevent physical damage during testing and to fine-tune our parameters. Additionally, tools like rviz let us visualize sensor data and the car’s status in real-time, which makes debugging much easier.
+
 ## 3. Mobility Management
 
-### 3.1 Bill of materials (BOM)
+### 3.1 Bill of Materials (BOM)
 Component | Quantity | Function |
- :---: | :---: | --- |
-| Raspberry Pi 4 | 1 | A microcomputer that acts as the main brain and the **Host Controller** of the system, capable of running operating systems and handling complex processing tasks. |
+ :---: | :---: | :---: |
+| Raspberry Pi 5 | 1 | A microcomputer that acts as the main brain and the **Host Controller** of the system, capable of running operating systems and handling complex processing tasks. |
+| Raspberry Pi 5 Cooling Fan | 1 | A mini fan that cools the raspberry preventing it from overheating. | 
 | RRC Lite Controller | 1 | Integrates several elements: ***ROS expansion board, High-Frequency PID Control, Motor Closed-Loop Control, Servo Control and Feedback, IMU Data Acquisition, Power Status Monitoring***, and a ***Power Switch***. |
 | STL-19P TOF Lidar | 1 | Provides precise, 360-degree distance measurements for real-time navigation and obstacle detection in dynamic environments. |
-| 15 kg.cm Digital Servo | 1 | A servo to control the Ackerman system to make precise movements. |
+| 15 kg.cm Digital Servo | 1 | A servo to control the Ackermann system to make precise movements. |
 | 65 mm Anti-Slip Rubber Wheel | 1 | Allows the car to move back, forth, and make turns. |
 | 310 DC geared Encoder Motor | 1 | A high-speed DC motor used for propelling the car. |
 | Monocular Camera | 1 | A camera used for capturing images and videos, can be used for computer vision or live streaming. |
-| Jumper Cables | 6 | Component | Used to connect various components together. |
+| Jumper Cables | 17 | Used to connect various components together. |
 | USB Cable | 3 | A cable to connect the Raspberry Pi4 to the camera, Raspberry to Lidar, and Raspberry to Controller. |
 | ⁠Li-Po Battery 7.4 V 2200 mAh 20C | 1 | A lithium polymer battery that provides portable, high-density power. |
 
-### 3.2 Wiring diagram
+### 3.2 Wiring Diagram
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/c9d2e663-1c4f-429b-adc3-aad25e70b846">
+  </p>
+
+### 3.3 Reasons for Using Our Motors
+
+We selected two 310 DC Geared Encoder Motors. These motors are installed on the vehicle's rear axle, offering the torque and speed necessary for both stability and maneuverability.
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/1c9c16e2-c9d5-4682-91b8-cc7b88997cbd">
+  </p>
+
++ ***Torque***: Each motor provides approximately 1.2 Nm of torque, which is sufficient to handle the weight and required acceleration of the vehicle. This level of torque allows the vehicle to navigate without straining the motors.
++ ***Speed***: The motors run at 450 RPM at 7.4V, giving a balance between swift response and controlled movement. This speed is ideal for applications where moderate pace and precision are essential, avoiding abrupt or excessive acceleration.
+
+### 3.4 Motors Axle System
+
+The two motors are connected to an axle in the rear space, which allows the wheels to support the weight of the car. This axle is essential for the car to move forward and backward efficiently, ensuring a smoother ride in curves and reducing tire wear. It improves vehicle stability, which is particularly important in tight corners or under variable road conditions.
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/ceaa0a0e-a276-4760-bf44-b892d148df29">
+  </p>
+
+### 3.5 Ackermann System
 
 ## 4. Power and Sense Management
 
-### 4.1 Reasons for Sensors and Camera
+### 4.1 Power distribution diagram
 
-+ STL-19P TOF Lidar:
+### 4.2 Reasons for Using Our Sensors and Camera
+
+#### 4.2.1 STL-19P TOF Lidar:
 
   + ***Precise environmental mapping***: With its ±10mm accuracy, the STL-19P enables precise positioning, essential for navigating narrow or intricate sections of the obstacle course. This allows our robot to make calculated movements without collisions or deviations.
   + ***Real-time obstacle avoidance***: With its fast sampling rate, the LiDAR can detect and react to obstacles dynamically, ensuring smoother movement through the course.
   + ***Enhanced performance in varied lighting***: Its high tolerance for ambient light up to 60,000 lux and ability to detect glass is essential, where lighting conditions vary. This feature ensures our robot maintains consistent performance, accurately detecting objects and avoiding potential pitfalls like transparent or shiny obstacles.
   
-+ Monocular Camera:
+#### 4.2.2 Monocular Camera:
 
   + ***Color detection***: Since graphical color detection is a core part of your project, the camera can precisely identify various colors on the course. This enables our robot to execute programmed actions based on specific color cues, which is crucial for the Obstacle challenge, which requires interaction with color-based objects.
   + ***Spatial awareness through data fusion***: When combining camera data with our sensor, the robot gains a richer understanding of its environment. The camera provides detailed visual context that complements other data sources, leading to a more informed and adaptable navigation strategy.
 
-### 4.2 Power distribution diagram
+### 4.3 Power Source
+
+The battery powering the autonomous car is a ***Lithium Polymer (Li-poly)*** type with a capacity of 2200 mAh and a nominal voltage of 7.4V. This battery was chosen specifically to meet the energy demands of the system, providing enough power to run both the Raspberry Pi and the vehicle's motors simultaneously. With a discharge capacity of 20C, the battery ensures a consistent energy supply, which is essential for maintaining system performance in high-demand applications like autonomous operation and real-time data processing.
+
+#### 4.3.1 Charger:
+The charging system for the autonomous car consists of an ***AC Charger*** specifically designed for lithium polymer (Li-poly) batteries. This charger operates at an output voltage of 7.4V and provides a steady and safe current for the 2200 mAh battery, ensuring efficient charging without overheating. The charger's design allows for a quick and secure connection to the vehicle, ensuring a full and rapid charge to keep the car's systems operating optimally.
+
+
+
 
 
 
