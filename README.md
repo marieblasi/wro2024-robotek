@@ -220,7 +220,7 @@ We redesigned the prototype after realizing that we needed to adapt the new comp
   </p>
   
 ---
-## *Third Version!*
+## *Last Version!*
 ### *6.1 Strategy*
 
 #### *PID Controller*
@@ -244,10 +244,10 @@ The combination of these three terms allows the PID controller to correct the sy
 - Can adjust system responses to be faster or slower, depending on the application, achieving a balance between speed and stability. This is essential for processes where rapid response and minimal oscillation are needed.
 - Is simpler to implement although more advanced controllers exist, requiring just three parameters to tune. Many tuning methods exist, making it straightforward to customize for different systems.
 
-### *6.2 Designing and printing the third prototype*
+### *6.2 Designing and printing the last prototype*
 
 We printed the prototype for the third time:
-#### What we change:
+#### What we changed:
 - Added an additional level to better distribute the components and provide a mount for the *webcam*.
 - Slightly modified the design of the motor mount to fit the *PowerBank 12000mAh*, ensuring a perfect fit and a more efficient arrangement of all elements.
 - Added 2 *QRT 1A Sensors* to improve the precision of environmental sensing while a *MPU6050 Accelerometer & Gyroscope Sensor* was included to enhance stability and orientation control.
@@ -360,12 +360,3 @@ We defined our robot's code for the parallel parking system, consisting of three
 + ***`measure_parking_space` function:*** It will define the continuously forward moves of the robot while using sensors to measure the distance on the right side, checking if the detected space is large enough for parking (greater than the required length). If a valid parking space is detected, the robot proceeds to execute the `parking maneuver`.
 + ***The `parallel_parking` function:*** Performs the actual maneuver: the robot first moves forward to align itself with the space, then turns to the right while moving backward to start entering the space, and finally, it turns left to straighten itself and continue reversing into the spot.
 + ***The `main_loop` function:*** Running continuously, it will check for parking spaces and initialize the `parking maneuver` once a suitable space is found. The program terminates after the robot successfully parks.
----
-## *Final Version!*
-### *7.1 Strategy*
-### *7.2 Designing and printing the final prototype*
-
-<p align = "center">
-  <img src = "https://github.com/user-attachments/assets/3875dfb9-88ba-4854-b978-0ba94a29dcd8", width = "650px">
-  </p>
-
