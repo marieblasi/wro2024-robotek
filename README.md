@@ -15,24 +15,27 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 - [1. 🤖 About us!](#1-about-us)
   - [1.1 🌟 Team presentation](#11-team-presentation)
   - [1.2 ✅ Team Management](#12-team-management)
-  - [1.3 🤔 Why did we choose to participate?](#13-why-did-we-choose-to-participate)
+  - [1.3 🤔 Reasons to participate](#13-reasons-to-participate)
 - [2. 🛠️ About the car](#2-about-the-car)
-  - [2.1 💡 Which is our autonomous car's logic?](#21-which-is-our-autonomous-cars-logic)
-  - [2.2 ⚡ Flow Diagram](#22-flow-diagram)
+  - [2.1 🧠 Our autonomous car's logic](#21-our-autonomous-cars-logic)
+  - [2.2 💡 Flow Diagram](#22-flow-diagram)
   - [2.3 🖥️ Why Python?](#23-why-python)
-  - [2.4 🔌 Why ROS?](#24-why-ros)
-- [3. Mobility Management](#3-mobility-management)
-  - [3.1 Bill of Materials (BOM)](#31-bill-of-materials-bom)
-  - [3.2 Wiring Diagram](#32-wiring-diagram)
-  - [3.3 Differential System](#33-differential-system)
-- [4.0 TOF System](#4-tof-system)
-  - [4.1 First Phase](#41-first-phase)
-  - [4.2 Second Phase](#42-second-phase)
-  - [4.3 Third Phase](#43-third-phase)
-- [5.0 Sensores](#50-sensores)
-  - [5.1 TSC3200 color sensor](#51-tsc3200-color-sensor)
-  - [5.2 ESP32 CAM](#52-esp32-cam)
-    - [5.2.1 CODE ESP32 CAM](#521-code-esp32-cam)
+  - [2.4 🎯 Why ROS?](#24-why-ros)
+- [3. ⚙️ Mobility Management](#3-mobility-management)
+  - [3.1 🧱 Bill of Materials (BOM)](#31-bill-of-materials-bom)
+  - [3.2 🔌 Wiring Diagram](#32-wiring-diagram)
+- [4. 🔋 Power and Sense Management](#4-power-and-sense-management)
+  - [4.1 🧰 Reasons for Sensors and Camera](#41-reasons-for-sensors-and-camera)
+  - [4.2 ⚡ Power Distribution Diagram](#42-power-distribution-diagram)
+- [5. 🏎️ Building the Robot](#5-building-the-robot)
+  - [5.1 🖨️ Designing, Printing, and Ensembling](#51-designing-printing-and-ensembling)
+  - [5.2 📍 Code for the Camera](#52-code-for-the-camera)
+  - [5.3 📍 Code for the Raspberry Pi 5](#53-code-for-the-raspberry-pi-5)
+  - [5.4 📍 Code for the Motors](#54-code-for-the-motors)
+- [6. 📌 Principal Code](#6-principal-code)
+  - [6.1 🔒 Open challenge](#61-open-challenge)
+  - [6.2 🔒 Obstacle Challenge](#62-obstacle-challenge)
+  - [6.3 🔒 Parking Strategy](#63-parking-strategy)
 
 ## 1. About us!
 
@@ -56,7 +59,7 @@ Our project is the product of a collaborative effort by a talented and dedicated
 + ***Team Supervisor:*** Alejandro Garayar
 + ***Coach:*** Renzo Damian
 
-### 1.3 Why did we choose to participate?
+### 1.3 Reasons to participate
 
 We see this project as more than just a competition. It is a chance to be creative, work together, and overcome challenges—both in the design and in ourselves. By designing our robot, we are not creating just a machine but a mixture of our electronic and coding skills, and innovation.
 
@@ -64,7 +67,7 @@ This experience has reminded us that endorsing difficulties means finding soluti
 
 ## 2. About the car!
 
-### 2.1 Which is our autonomous car's logic?
+### 2.1 Our autonomous car's logic
 
 1. The program will begin with the initialization of sensors, camera, and variables. Once started, the car will enter a continuous loop with the main function running endlessly. In each loop iteration, *it will capture a frame from the camera and will read input from various sensors*, including distance and reflectance sensors.
 2. The captured frame  is then analyzed to detect obstacles, and if one is found, its color is identified as either red or green. *The navigation strategy adjusts the car to pass on the right side for red obstacles and on the left side for green ones.* Steering adjustments are combined with the obstacle avoidance strategy to manage the car’s movement. The system also monitors proximity to obstacles, performing avoidance maneuvers if too close, reducing speed when necessary, or maintaining normal speed otherwise.
@@ -104,14 +107,14 @@ Component | Quantity | Function |
 
 ## 4. Power and Sense Management
 
-### 4.1 Reasons for choosing our sensors and camera
+### 4.1 Reasons for Sensors and Camera
 
 + STL-19P TOF Lidar:
 
   + ***Precise environmental mapping***: With its ±10mm accuracy, the STL-19P enables precise positioning, essential for navigating narrow or intricate sections of the obstacle course. This allows our robot to make calculated movements without collisions or deviations.
   + ***Real-time obstacle avoidance***: With its fast sampling rate, the LiDAR can detect and react to obstacles dynamically, ensuring smoother movement through the course.
   + ***Enhanced performance in varied lighting***: Its high tolerance for ambient light up to 60,000 lux and ability to detect glass is essential, where lighting conditions vary. This feature ensures our robot maintains consistent performance, accurately detecting objects and avoiding potential pitfalls like transparent or shiny obstacles.
-
+  
 + Monocular Camera:
 
   + ***Color detection***: Since graphical color detection is a core part of your project, the camera can precisely identify various colors on the course. This enables our robot to execute programmed actions based on specific color cues, which is crucial for the Obstacle challenge, which requires interaction with color-based objects.
@@ -121,8 +124,22 @@ Component | Quantity | Function |
 
 
 
-## Building the Robot
-### *4.1 Code for the camera*
+## 5. Building the Robot
+### *5.1 Designing, Printing, and Ensembling*
+
+What we changed:
++ Added an additional level to better distribute the components and provide a mount for the webcam.
++ Slightly modified the design of the motor mount to fit the PowerBank 12000mAh, ensuring a perfect fit and a more efficient arrangement of all elements.
++ Added 2 QRT 1A Sensors to improve the precision of environmental sensing while a MPU6050 Accelerometer & Gyroscope Sensor was included to enhance stability and orientation control.
++ Changed the engine and adjusted the Gear ratio to provide better torque for handling challenging terrain.
++ After, upgrading our batteries to LiPo cells to increase power capacity and efficiency, a camera was mounted for real-time visual feedback, and a push button, for easy interaction.
++ Change the metal wheels to plastic ones for their lightweight properties, and the front wheels’ support was reinforced with ball bearings to reduce friction and ensure smoother movement.
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/dca1240a-ef3a-4b02-b663-73f74957ab60", width = "650px">
+  </p>
+
+### *5.2 Code for the camera*
 
 We started by making the code for the camera. On it, we made the camera descompose the image into pixels, which detected the color it sees in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
 
@@ -143,26 +160,13 @@ from util import get_limits
   <img width="900" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
 </p>
 
-### *4.2 Designing, Printing, and Ensembling*
+### *5.3 Code for the Raspberry PI 5*
 
-What we changed:
-+ Added an additional level to better distribute the components and provide a mount for the webcam.
-+ Slightly modified the design of the motor mount to fit the PowerBank 12000mAh, ensuring a perfect fit and a more efficient arrangement of all elements.
-+ Added 2 QRT 1A Sensors to improve the precision of environmental sensing while a MPU6050 Accelerometer & Gyroscope Sensor was included to enhance stability and orientation control.
-+ Changed the engine and adjusted the Gear ratio to provide better torque for handling challenging terrain.
-+ After, upgrading our batteries to LiPo cells to increase power capacity and efficiency, a camera was mounted for real-time visual feedback, and a push button, for easy interaction.
-+ Change the metal wheels to plastic ones for their lightweight properties, and the front wheels’ support was reinforced with ball bearings to reduce friction and ensure smoother movement.
-
-<p align = "center">
-  <img src = "https://github.com/user-attachments/assets/dca1240a-ef3a-4b02-b663-73f74957ab60", width = "650px">
-  </p>
-
-### *4.3 Code for the Raspberry PI 4*
-
-### *4.4 Code for the motors*
+### *5.4 Code for the Motors*
   
-### *6.3 Main code* 
+## 6. Principal Code
+### *6.1 Open challenge* 
 
-### *6.4 Code for avoiding obstacles*
+### *6.2 Obstacle Challenge*
 
-### *6.5 Code for parking*
+### *6.3 Parking Strategy*
