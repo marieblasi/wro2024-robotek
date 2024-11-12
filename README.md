@@ -43,7 +43,7 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
     - [5.1.3 Camera Housing](#513-camera-housing)
     - [5.1.4 Chassis](#514-chassis)
   - [5.2 📍 Code for the Camera](#52-code-for-the-camera)
-- [6. 📌 Principal Code](#6-principal-code)
+- [6. 📌 Principal Strategy](#6-principal-strategy)
   - [6.1 🔒 Open challenge](#61-open-challenge)
   - [6.2 🔒 Obstacle Challenge](#62-obstacle-challenge)
   - [6.3 🔒 Parking Strategy](#63-parking-strategy)
@@ -244,9 +244,29 @@ from util import get_limits
   <img width="900" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
 </p>
   
-## 6. Principal Code
+## 6. Principal Strategy
 ### *6.1 Open challenge* 
 
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/49088091-f8d1-4cc6-a4a1-3171e5891f55">
+  </p>
+
+We configured the LiDAR system to enable precise measurement of the distances between the vehicle and surrounding walls. The primary function of the LiDAR is to assess the spatial environment continuously; in instances where no walls or corners are detected, the system defaults to a command that propels the vehicle forward. Upon detecting a wall or other obstruction, the LiDAR re-evaluates the vehicle's position and, based on this new spatial data, recalculates whether there is adequate space for continued movement in the desired direction. When a corner is identified, the vehicle initiates a turning maneuver and begins tracking lap progression. This setup allows for efficient navigation and accurate lap counting through environmental feedback loops.
+
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/53aa9164-74f9-4000-afcc-756a9ed1612e">
+  </p>
+
 ### *6.2 Obstacle Challenge*
+The monocular camera is programmed to analyze the color of pillars within the vehicle's path. Upon detecting a red-colored pillar, the system will direct the vehicle to steer right, whereas a green-colored pillar prompts a leftward maneuver. Following the color-based directional adjustment, the vehicle recalibrates its path to ensure alignment with the pre-established navigation loop. This sequence allows the vehicle to dynamically integrate real-time visual data with its primary navigation loop, enhancing responsiveness to environmental cues.
+
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/92544ffe-bac1-489a-9a5f-db740bb29ac1">
+</p>
 
 ### *6.3 Parking Strategy*
+Upon completing the three laps, the vehicle initiates a Parking Sequence, beginning with the detection of the parking boundaries through LiDAR analysis. The LiDAR system assesses the available space and aligns the vehicle with the detected parking area. If sufficient space is confirmed, the vehicle executes a parallel parking maneuver. Following this, the system verifies the vehicle’s final position to ensure proper alignment, at which point it halts. In cases where space is insufficient, the vehicle adjusts its orientation and resumes scanning to locate an appropriate parking area, repeating the process until successful parking is achieved.
+
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/e138885a-3f35-4f6f-b869-38107b6f0949">
+</p>
