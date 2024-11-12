@@ -131,7 +131,7 @@ Component | Quantity | Function |
   </p>
 
 ---
-## First Version!
+## Final Version!
 ### *4.1 Code for the camera*
 
 We started by making the code for the camera. On it, we made the camera descompose the image into pixels, which detected the color it sees in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
@@ -360,12 +360,3 @@ We defined our robot's code for the parallel parking system, consisting of three
 + ***`measure_parking_space` function:*** It will define the continuously forward moves of the robot while using sensors to measure the distance on the right side, checking if the detected space is large enough for parking (greater than the required length). If a valid parking space is detected, the robot proceeds to execute the `parking maneuver`.
 + ***The `parallel_parking` function:*** Performs the actual maneuver: the robot first moves forward to align itself with the space, then turns to the right while moving backward to start entering the space, and finally, it turns left to straighten itself and continue reversing into the spot.
 + ***The `main_loop` function:*** Running continuously, it will check for parking spaces and initialize the `parking maneuver` once a suitable space is found. The program terminates after the robot successfully parks.
----
-## *Final Version!*
-### *7.1 Strategy*
-### *7.2 Designing and printing the final prototype*
-
-<p align = "center">
-  <img src = "https://github.com/user-attachments/assets/3875dfb9-88ba-4854-b978-0ba94a29dcd8", width = "650px">
-  </p>
-
