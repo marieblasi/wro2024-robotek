@@ -43,6 +43,7 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
     - [5.1.3 Camera Housing](#513-camera-housing)
     - [5.1.4 Chassis](#514-chassis)
   - [5.2 📍 Code for the Camera](#52-code-for-the-camera)
+- [6. 🛠️ Assembly Instructions](#6-assembly-instructions)
 - [7. 📌 Principal Strategy](#7-principal-strategy)
   - [7.1 🔒 Open challenge](#71-open-challenge)
   - [7.2 🔒 Obstacle Challenge](#72-obstacle-challenge)
