@@ -18,7 +18,9 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
   - [1.3 🤔 Reasons to participate](#13-reasons-to-participate)
 - [2. 🛠️ About the car](#2-about-the-car)
   - [2.1 🧠 Our autonomous car's logic](#21-our-autonomous-cars-logic)
-  - [2.2 💡 Flow Diagram](#22-flow-diagram)
+  - [2.2 💡 Flow Diagrams](#22-flow-diagrams)
+    - [2.2.1 💡 Open Challenge](#221-flow-diagram-open-challenge)
+    - [2.2.2 💡 Obstacle Challenge](#221-flow-diagram-obstacle-challenge)
   - [2.3 🖥️ Why Python?](#23-why-python)
   - [2.4 🎯 Why ROS?](#24-why-ros)
 - [3. ⚙️ Mobility Management](#3-mobility-management)
@@ -80,10 +82,16 @@ This experience has reminded us that endorsing difficulties means finding soluti
     + Green: If the obstacle is green, the car will adjust to the left.
 5. After completing the three laps and avoiding all obstacles, the car will activate its parallel ***Parking Mode***. Using LIDAR, it will look for a suitable parking spot and, based on distance and angle calculations, perform a parallel parking maneuver.
 
-### 2.2 Flow Diagram
+### 2.2 Flow Diagrams
+#### 2.2.1 Open Challenge
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/11a8e8a9-7c15-461f-9e41-180b132f0784">
+  </p>
+
+#### 2.2.2 Obstacle Challenge
 
 <p align = "center">
-  <img src = "https://github.com/user-attachments/assets/d84a94ec-9524-4cf2-82c5-7b5040ac872d">
+  <img src = "https://github.com/user-attachments/assets/4a29be93-cac2-4de9-87e6-d7afea2215f0">
   </p>
 
 ### 2.3 Why Python?
