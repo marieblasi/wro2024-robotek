@@ -43,10 +43,10 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
     - [5.1.3 Camera Housing](#513-camera-housing)
     - [5.1.4 Chassis](#514-chassis)
   - [5.2 📍 Code for the Camera](#52-code-for-the-camera)
-- [6. 📌 Principal Strategy](#6-principal-strategy)
-  - [6.1 🔒 Open challenge](#61-open-challenge)
-  - [6.2 🔒 Obstacle Challenge](#62-obstacle-challenge)
-  - [6.3 🔒 Parking Strategy](#63-parking-strategy)
+- [7. 📌 Principal Strategy](#7-principal-strategy)
+  - [7.1 🔒 Open challenge](#71-open-challenge)
+  - [7.2 🔒 Obstacle Challenge](#72-obstacle-challenge)
+  - [7.3 🔒 Parking Strategy](#73-parking-strategy)
 
 ## 1. About us!
 ### 1.1 Team Presentation
@@ -194,7 +194,7 @@ The charging system for the autonomous car consists of an ***AC Charger*** speci
 
 ## 5. Building the Robot
 This autonomous car project features a carefully constructed design that combines metal components with custom 3D-printed parts to create a durable, lightweight, and functional structure.
-### *5.1 Designing, Printing, and Ensembling*
+### 5.1 Designing, Printing, and Ensembling
 #### 5.1.1 3D Printing Process
 Custom parts, such as axles, gears, and component supports, were fabricated using 3D printing. This allowed for complex designs tailored to the specific layout and functionality required for the car’s systems. The flexibility of 3D printing enabled rapid prototyping, where parts were tested, refined, and adjusted to ensure compatibility and strength. This process helped achieve precise fits for components like motor mounts and sensor housings, enhancing overall performance and structural integrity.
 
@@ -223,7 +223,7 @@ The base and upper casing were crafted from aluminum to provide strength and lig
   <img src = "https://github.com/user-attachments/assets/b878388c-313e-4fd7-aca1-75f875a06fa5">
   </p>
 
-### *5.2 Code for the Camera*
+### 5.2 Code for the Camera
 
 We started by making the code for the camera. On it, we made the camera descompose the image into pixels, which detected the color it sees in RGB format and then converted it into a new HSV format. We used the color palette based on hue (HUE) to select the color and set the limits with which the range of colors we are looking for will be detected. Once the color code in HSV is obtained, we compared it with a specific range of values. If the desired color is within our palette, it will be highlighted with an internal frame.
 
@@ -243,9 +243,31 @@ from util import get_limits
 <p align = "center">
   <img width="900" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
 </p>
-  
-## 6. Principal Strategy
-### *6.1 Open challenge* 
+
+## 6. Assembly Instructions
+
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/59f47ae4-5441-4511-bcb8-1ff3889bf402">
+</p>
+
++ ***Base Assembly.***
++ ***Raspberry Placement:*** Begin by securing the Raspberry Pi to the center of the base with 4 mounts, using screws to keep it stable.
++ ***Install the motor system at the rear of the base:*** Motor supports are screwed into the base. Each motor is attached to its support with screws, ensuring alignment. Attach the gears to each motor shaft. Insert the axle between the two motors, secured with two side supports attached to the base. The base edges help to hold the axle in place.
++ ***Ackermann System:*** In the front of the base, install the Ackermann steering system. Secure the system with screws. Mount the servo motor in its housing and attach it to the Ackermann mechanism.
++ ***Upper Casing Assembly:*** Attach 4 mounts at the corners of the base to support the upper casing.
+
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/d8bbc8ef-fb9c-45cf-954c-44c064641d15">
+</p>
+
++ ***LiDAR Placement:*** Screw the LiDAR sensor into a central location on the upper casing. Attach the LiDAR adapter at the front, ensuring it does not obstruct the view of other components.
++ ***LiPo Battery Placement:*** Place the LiPo battery at the rear of the upper casing, ensuring it does not interfere with the LiDAR’s field of view.
++ ***Camera Placement:*** Place the monocular camera on the front of the base, positioning it to capture obstacles and detect colors in the car's path. Secure the camera using its dedicated 3D-printed mount, ensuring it does not obstruct the LiDAR's view or other sensors.
+
+After completing the mechanical assembly, connect all electronic components according to the provided wiring diagram. Follow the wiring carefully to ensure proper function of the motor, LiDAR, and servo systems. You can see the Wiring diagram in the folder [schemes](schemes).
+
+## 7. Principal Strategy
+### 7.1 Open challenge
 
 <p align = "center">
   <img src="https://github.com/user-attachments/assets/49088091-f8d1-4cc6-a4a1-3171e5891f55">
@@ -257,14 +279,14 @@ We configured the LiDAR system to enable precise measurement of the distances be
   <img src="https://github.com/user-attachments/assets/53aa9164-74f9-4000-afcc-756a9ed1612e">
   </p>
 
-### *6.2 Obstacle Challenge*
+### 7.2 Obstacle Challenge
 The monocular camera is programmed to analyze the color of pillars within the vehicle's path. Upon detecting a red-colored pillar, the system will direct the vehicle to steer right, whereas a green-colored pillar prompts a leftward maneuver. Following the color-based directional adjustment, the vehicle recalibrates its path to ensure alignment with the pre-established navigation loop. This sequence allows the vehicle to dynamically integrate real-time visual data with its primary navigation loop, enhancing responsiveness to environmental cues.
 
 <p align = "center">
   <img src="https://github.com/user-attachments/assets/92544ffe-bac1-489a-9a5f-db740bb29ac1">
 </p>
 
-### *6.3 Parking Strategy*
+### 7.3 Parking Strategy
 Upon completing the three laps, the vehicle initiates a Parking Sequence, beginning with the detection of the parking boundaries through LiDAR analysis. The LiDAR system assesses the available space and aligns the vehicle with the detected parking area. If sufficient space is confirmed, the vehicle executes a parallel parking maneuver. Following this, the system verifies the vehicle’s final position to ensure proper alignment, at which point it halts. In cases where space is insufficient, the vehicle adjusts its orientation and resumes scanning to locate an appropriate parking area, repeating the process until successful parking is achieved.
 
 <p align = "center">
