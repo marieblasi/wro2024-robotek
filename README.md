@@ -32,15 +32,17 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 - [4. 🔋 Power and Sense Management](#4-power-and-sense-management)
   - [4.1 🔌 Power Distribution Diagram](#41-power-distribution-diagram)
   - [4.2 ⚡ Power Source](#42-power-source)
-    - [4.2.1 🔋 Charger](#421-charger)
+    - [4.2.1 Charger](#421-charger)
   - [4.3 📷 Reasons for Using Our Sensors and Camera](#43-reasons-for-using-our-sensors-and-camera)
-    - [4.3.1 🤖 STL-19P TOF Lidar](#431-stl-19p-tof-lidar)
-    - [4.3.2 📷 Monocular Camera](#432-monocular-camera)
+    - [4.3.1 STL-19P TOF Lidar](#431-stl-19p-tof-lidar)
+    - [4.3.2 Monocular Camera](#432-monocular-camera)
 - [5. 🏎️ Building the Robot](#5-building-the-robot)
   - [5.1 🖨️ Designing, Printing, and Ensembling](#51-designing-printing-and-ensembling)
+    - [5.1.1 3D Printing Process](#511-3d-printing-process)
+    - [5.1.2 The Systems](#512-the-systems)
+    - [5.1.3 Camera Housing](#513-camera-housing)
+    - [5.1.4 Chassis](#514-chassis)
   - [5.2 📍 Code for the Camera](#52-code-for-the-camera)
-  - [5.3 📍 Code for the Raspberry Pi 5](#53-code-for-the-raspberry-pi-5)
-  - [5.4 📍 Code for the Motors](#54-code-for-the-motors)
 - [6. 📌 Principal Code](#6-principal-code)
   - [6.1 🔒 Open challenge](#61-open-challenge)
   - [6.2 🔒 Obstacle Challenge](#62-obstacle-challenge)
@@ -191,17 +193,34 @@ The charging system for the autonomous car consists of an ***AC Charger*** speci
 
 
 ## 5. Building the Robot
+This autonomous car project features a carefully constructed design that combines metal components with custom 3D-printed parts to create a durable, lightweight, and functional structure.
 ### *5.1 Designing, Printing, and Ensembling*
-What we changed:
-+ Added an additional level to better distribute the components and provide a mount for the webcam.
-+ Slightly modified the design of the motor mount to fit the PowerBank 12000mAh, ensuring a perfect fit and a more efficient arrangement of all elements.
-+ Added 2 QRT 1A Sensors to improve the precision of environmental sensing while a MPU6050 Accelerometer & Gyroscope Sensor was included to enhance stability and orientation control.
-+ Changed the engine and adjusted the Gear ratio to provide better torque for handling challenging terrain.
-+ After, upgrading our batteries to LiPo cells to increase power capacity and efficiency, a camera was mounted for real-time visual feedback, and a push button, for easy interaction.
-+ Change the metal wheels to plastic ones for their lightweight properties, and the front wheels’ support was reinforced with ball bearings to reduce friction and ensure smoother movement.
+#### 5.1.1 3D Printing Process
+Custom parts, such as axles, gears, and component supports, were fabricated using 3D printing. This allowed for complex designs tailored to the specific layout and functionality required for the car’s systems. The flexibility of 3D printing enabled rapid prototyping, where parts were tested, refined, and adjusted to ensure compatibility and strength. This process helped achieve precise fits for components like motor mounts and sensor housings, enhancing overall performance and structural integrity.
 
 <p align = "center">
-  <img src = "https://github.com/user-attachments/assets/dca1240a-ef3a-4b02-b663-73f74957ab60", width = "650px">
+  <img src = "https://github.com/user-attachments/assets/52a1f066-d80e-4882-8f03-1a08d98fd786">
+  </p>
+
+#### 5.1.2 The Systems
+The mobility and steering systems include motors, axles, gears, and a high-torque digital servo for precise control. The motor and servo systems were mounted to maximize power application to the wheels, while axles and gears were aligned to handle torque efficiently.
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/491afc7a-acc9-4157-94f5-fc91b3eca43d">
+  </p>
+
+#### 5.1.3 Camera Housing
+The monocular camera is mounted at the front of the car in a dedicated 3D-printed housing to capture clear, direct images of the path ahead. This mount places the camera at an ideal angle and height, ensuring that it detects obstacles and recognizes colors effectively. The camera mount is also aligned to avoid interference with the LiDAR sensor’s field of view, maximizing the sensing range of both components.
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/08a7b2f7-d6ce-41b6-a408-0eb419dda3bb">
+  </p>
+
+#### 5.1.4 Chassis
+The base and upper casing were crafted from aluminum to provide strength and lightweight support for all components. The base was designed to securely mount the Raspberry Pi and support the weight of the vehicle’s systems, offering a stable foundation and balanced weight distribution critical for stability. The upper casing, which houses the LiDAR sensor, was designed to ensure the sensor has an unobstructed view while protecting it from potential impacts and environmental factors.
+
+<p align = "center">
+  <img src = "https://github.com/user-attachments/assets/b878388c-313e-4fd7-aca1-75f875a06fa5">
   </p>
 
 ### *5.2 Code for the Camera*
@@ -218,16 +237,12 @@ from PIL import Image
 from util import get_limits
 ```
 + ***`get_limits` function:*** The camera took a color in `BGR` format and converted it to `HSV` to extract the hue component. It then defined a range of `±10` around the hue value and returned lower and upper bounds for filtering the color in the `HSV` color space. This enabled more effective color detection by accounting for variations in the color's hue.
-+ ***Webcam initialization and color setup:*** The program initialized the webcam using `cv2.VideoCapture(1)` to capture live video. It defined two colors, `red` and `blue`, in `BGR` format, which was used for detecting those specific colors within the video feed.
++ ***Webcam initialization and color setup:*** The program initialized the webcam using `cv2.VideoCapture(1)` to capture live video. It defined two colors, `red` and `green`, in `BGR` format, which was used for detecting those specific colors within the video feed.
 + ***Main Loop with frame capture:*** The program will continuously capture frames from the webcam. Each frame was converted from `BGR` to `HSV` format, which allowed more effective color-based filtering. The frame was then processed to isolate the areas that match the target color using the previously calculated `HSV` limits. If a match is found, a rectangle is drawn around the detected color in the frame, which is then displayed in a window as shown:
 
 <p align = "center">
   <img width="900" alt="colorDetection" src="https://github.com/user-attachments/assets/fcd87a76-d15e-44bb-84c2-3114a56d85bc">
 </p>
-
-### *5.3 Code for the Raspberry PI 5*
-
-### *5.4 Code for the Motors*
   
 ## 6. Principal Code
 ### *6.1 Open challenge* 
