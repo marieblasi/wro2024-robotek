@@ -283,11 +283,11 @@ A PID controller adjusts system behavior by comparing a desired target value (se
 + ***Derivative (D):*** Reacts to the rate of change of error, smoothing the system response to prevent overshoot.
 The combination of these three terms allows the PID controller to correct the system’s course precisely, leading it to the desired state without oscillation, instability, or excessive delay.
 
+#### 7.1.2 Configuring
 <p align = "center">
   <img src="https://github.com/user-attachments/assets/49088091-f8d1-4cc6-a4a1-3171e5891f55">
   </p>
 
-#### 7.1.2 Configuring
 We configured the LiDAR system to enable precise measurement of the distances between the vehicle and surrounding walls. The primary function of the LiDAR is to continuously assess the spatial environment. The distances obtained from the LiDAR feed into the PID algorithm, which helps execute the necessary maneuvers to maintain the vehicle centered between two walls. In instances where no walls or corners are detected, the system defaults to a command that propels the vehicle forward.
 
 Upon detecting a wall or other obstruction, the LiDAR re-evaluates the vehicle’s position and, based on this new spatial data, recalculates whether there is adequate space for continued movement in the desired direction. When a corner is identified, the PID algorithm detects the difference in distance between both sides, allowing the vehicle to execute a turning maneuver accurately. The vehicle then begins tracking lap progression, with each turn marking progress within the lap. This setup enables efficient navigation and accurate lap counting through environmental feedback loops.
