@@ -49,6 +49,8 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
     - [7.1.1 PID Controller](#711-pid-controller)
     - [7.1.2 Configuring](#712-configuring)
   - [7.2 🔒 Obstacle Challenge](#72-obstacle-challenge)
+    - [7.2.1 "Follow the Gap"](#721-follow-the-gap)
+    - [7.2.2 Configuring](#722-configuring)
   - [7.3 🔒 Parking Strategy](#73-parking-strategy)
 
 ## 1. About us!
@@ -297,7 +299,17 @@ Upon detecting a wall or other obstruction, the LiDAR re-evaluates the vehicle�
   </p>
 
 ### 7.2 Obstacle Challenge
-The monocular camera is programmed to analyze the color of pillars within the vehicle's path. Upon detecting a red-colored pillar, the system will direct the vehicle to steer right, whereas a green-colored pillar prompts a leftward maneuver. Following the color-based directional adjustment, the vehicle recalibrates its path to ensure alignment with the pre-established navigation loop. This sequence allows the vehicle to dynamically integrate real-time visual data with its primary navigation loop, enhancing responsiveness to environmental cues.
+#### 7.2.1 "Follow the Gap"
+The Follow The Gap algorithm has been selected for obstacle detection, leveraging the precise distance measurements provided by the LIDAR sensor. This approach offers several key advantages:
++ ***Enhanced Safety and Navigation:*** Real-time obstacle avoidance with dynamic path planning, smooth trajectory generation around detected obstacles, and minimizes the risk of collisions in complex environments.
++ ***Computational Efficiency:*** Low processing overhead compared to alternative methods, fast decision-making suitable for real-time applications, and simple implementation while maintaining robust performance.
+
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/6a71fa17-8744-4536-b349-b0501dac9156">
+</p>
+
+#### 7.2.2 Configuring
+The vehicle's navigation system combines LiDAR-based distance measurements and visual data from a monocular camera for obstacle detection and maneuvering. The monocular camera analyzes the color of pillars within the vehicle's path; a red-colored pillar prompts a rightward turn, while a green-colored pillar triggers a leftward turn. Simultaneously, for obstacle avoidance, the LiDAR system uses the "Follow the Gap" algorithm. This algorithm identifies the closest LiDAR point, creates a safety bubble around it, and zeros out points within this bubble. It then finds the longest gap among free-space points, steering the vehicle towards the furthest point in this gap. After executing the color-based or gap-based directional adjustments, the vehicle recalibrates its path to maintain alignment with the pre-established navigation loop, integrating real-time visual and spatial data for efficient navigation and enhanced responsiveness to environmental cues.
 
 <p align = "center">
   <img src="https://github.com/user-attachments/assets/92544ffe-bac1-489a-9a5f-db740bb29ac1">
