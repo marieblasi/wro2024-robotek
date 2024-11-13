@@ -46,6 +46,8 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
 - [6. 🛠️ Assembly Instructions](#6-assembly-instructions)
 - [7. 📌 Principal Strategy](#7-principal-strategy)
   - [7.1 🔒 Open challenge](#71-open-challenge)
+    - [7.1.1 PID Controller](#711-pid-controller)
+    - [7.1.2 Configuring](#712-configuring)
   - [7.2 🔒 Obstacle Challenge](#72-obstacle-challenge)
   - [7.3 🔒 Parking Strategy](#73-parking-strategy)
 
@@ -270,11 +272,25 @@ After completing the mechanical assembly, connect all electronic components acco
 ## 7. Principal Strategy
 ### 7.1 Open challenge
 
+#### 7.1.1 PID Controller
+<p align = "center">
+  <img src="https://github.com/user-attachments/assets/585225e3-453d-45b7-be68-642ec3ff8903">
+  </p>
+
+A PID controller adjusts system behavior by comparing a desired target value (setpoint) with the current value (measured variable) and applying corrections based on three components:
++ ***Proportional (P):*** Corrects errors directly related to the current error, giving immediate response.
++ ***Integral (I):*** Addresses accumulated past errors, eliminating any steady-state offset.
++ ***Derivative (D):*** Reacts to the rate of change of error, smoothing the system response to prevent overshoot.
+The combination of these three terms allows the PID controller to correct the system’s course precisely, leading it to the desired state without oscillation, instability, or excessive delay.
+
 <p align = "center">
   <img src="https://github.com/user-attachments/assets/49088091-f8d1-4cc6-a4a1-3171e5891f55">
   </p>
 
-We configured the LiDAR system to enable precise measurement of the distances between the vehicle and surrounding walls. The primary function of the LiDAR is to assess the spatial environment continuously; in instances where no walls or corners are detected, the system defaults to a command that propels the vehicle forward. Upon detecting a wall or other obstruction, the LiDAR re-evaluates the vehicle's position and, based on this new spatial data, recalculates whether there is adequate space for continued movement in the desired direction. When a corner is identified, the vehicle initiates a turning maneuver and begins tracking lap progression. This setup allows for efficient navigation and accurate lap counting through environmental feedback loops.
+#### 7.1.2 Configuring
+We configured the LiDAR system to enable precise measurement of the distances between the vehicle and surrounding walls. The primary function of the LiDAR is to continuously assess the spatial environment. The distances obtained from the LiDAR feed into the PID algorithm, which helps execute the necessary maneuvers to maintain the vehicle centered between two walls. In instances where no walls or corners are detected, the system defaults to a command that propels the vehicle forward.
+
+Upon detecting a wall or other obstruction, the LiDAR re-evaluates the vehicle’s position and, based on this new spatial data, recalculates whether there is adequate space for continued movement in the desired direction. When a corner is identified, the PID algorithm detects the difference in distance between both sides, allowing the vehicle to execute a turning maneuver accurately. The vehicle then begins tracking lap progression, with each turn marking progress within the lap. This setup enables efficient navigation and accurate lap counting through environmental feedback loops.
 
 <p align = "center">
   <img src="https://github.com/user-attachments/assets/53aa9164-74f9-4000-afcc-756a9ed1612e">
