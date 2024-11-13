@@ -48,9 +48,11 @@ We are Team Révine, proudly representing our country Perú 🇵🇪 🤖 !
   - [7.1 🔒 Open challenge](#71-open-challenge)
     - [7.1.1 PID Controller](#711-pid-controller)
     - [7.1.2 Configuring](#712-configuring)
+    - [7.1.3 Pseudo Code](#713-pseudo-code)
   - [7.2 🔒 Obstacle Challenge](#72-obstacle-challenge)
     - [7.2.1 "Follow the Gap"](#721-follow-the-gap)
     - [7.2.2 Configuring](#722-configuring)
+    - [7.2.3 Pseudo Code](#723-pseudo-code)
   - [7.3 🔒 Parking Strategy](#73-parking-strategy)
 
 ## 1. About us!
@@ -297,6 +299,86 @@ Upon detecting a wall or other obstruction, the LiDAR re-evaluates the vehicle�
 <p align = "center">
   <img src="https://github.com/user-attachments/assets/53aa9164-74f9-4000-afcc-756a9ed1612e">
   </p>
+
+#### 7.1.3 Pseudo Code
+```
+class RobotController:
+    def _init_(self):
+        # PID constants
+        self.kp = 0.5
+        self.ki = 0.1
+        self.kd = 0.2
+        
+        # PID variables
+        self.last_error = 0
+        self.integral = 0
+        
+        # Target distance from wall (meters)
+        self.target_distance = 1.0
+        
+        # Robot control limits
+        self.max_speed = 0.5
+        self.max_turn = 30  # degrees
+
+    def run(self):
+        while True:
+            # Get LiDAR readings (left, front, right)
+            left = get_lidar_left()
+            front = get_lidar_front()
+            right = get_lidar_right()
+            
+            # Emergency stop if too close to front wall
+            if front < 0.5:
+                stop_robot()
+                continue
+            
+            # Calculate error (distance from desired path)
+            error = self.target_distance - left
+            
+            # PID calculation
+            self.integral += error
+            derivative = error - self.last_error
+            self.last_error = error
+            
+            # Calculate steering angle
+            steering = (self.kp * error + 
+                       self.ki * self.integral + 
+                       self.kd * derivative)
+            
+            # Limit steering angle
+            steering = max(min(steering, self.max_turn), -self.max_turn)
+            
+            # Move robot
+            move_robot(
+                speed=self.max_speed,
+                turn_angle=steering
+            )
+
+def get_lidar_left():
+    # Get left side LiDAR readings
+    return lidar.get_distance(angle=90)
+
+def get_lidar_front():
+    # Get front LiDAR readings
+    return lidar.get_distance(angle=0)
+
+def get_lidar_right():
+    # Get right side LiDAR readings
+    return lidar.get_distance(angle=-90)
+
+def move_robot(speed, turn_angle):
+    # Send movement commands to robot
+    robot.set_velocity(speed, turn_angle)
+
+def stop_robot():
+    # Emergency stop
+    robot.set_velocity(0, 0)
+
+# Start the controller
+if _name_ == "_main_":
+    controller = RobotController()
+    controller.run()
+```
 
 ### 7.2 Obstacle Challenge
 #### 7.2.1 "Follow the Gap"
