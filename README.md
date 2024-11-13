@@ -315,6 +315,64 @@ The vehicle's navigation system combines LiDAR-based distance measurements and v
   <img src="https://github.com/user-attachments/assets/92544ffe-bac1-489a-9a5f-db740bb29ac1">
 </p>
 
+#### 7.2.3 Pseudo Code
+```
+class Navigator:
+    def _init_(self):
+        self.lidar_data = []
+        self.camera_image = None
+        self.safety_radius = 0.5
+
+    def run(self):
+        while True:
+            # Get sensor data
+            self.lidar_data = read_lidar()
+            self.camera_image = read_camera()
+            
+            # Process pillar colors
+            pillar_command = self.check_pillars()
+            
+            # Process obstacles
+            gap_command = self.find_gap()
+            
+            # Execute final movement
+            if pillar_command:
+                move_vehicle(pillar_command)
+            else:
+                move_vehicle(gap_command)
+
+    def check_pillars(self):
+        # Check for colored pillars in image
+        if detect_red(self.camera_image):
+            return "turn_right"
+        elif detect_green(self.camera_image):
+            return "turn_left"
+        return None
+
+    def find_gap(self):
+        # Follow the gap algorithm
+        if not self.lidar_data:
+            return "move_forward"
+
+        # 1. Find closest obstacle
+        closest = min(self.lidar_data)
+        
+        # 2. Create safety bubble
+        safe_points = []
+        for point in self.lidar_data:
+            if distance(point, closest) > self.safety_radius:
+                safe_points.append(point)
+        
+        # 3. Find largest gap
+        largest_gap = find_max_gap(safe_points)
+        
+        # 4. Get middle point of gap
+        target = get_gap_center(largest_gap)
+        
+        # 5. Calculate steering
+        return calculate_steering(target)
+```
+
 ### 7.3 Parking Strategy
 Upon completing the three laps, the vehicle initiates a Parking Sequence, beginning with the detection of the parking boundaries through LiDAR analysis. The LiDAR system assesses the available space and aligns the vehicle with the detected parking area. If sufficient space is confirmed, the vehicle executes a parallel parking maneuver. Following this, the system verifies the vehicle’s final position to ensure proper alignment, at which point it halts. In cases where space is insufficient, the vehicle adjusts its orientation and resumes scanning to locate an appropriate parking area, repeating the process until successful parking is achieved.
 
